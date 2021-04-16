@@ -1,0 +1,68 @@
+Visible Light Communication
+From Wikipedia, the free encyclopedia
+
+Visible light is only a small portion of the electromagnetic spectrum.
+Visible light communication (VLC) is a data communications medium using visible light between 400 and 800 THz (780–375 nm). Using visible light is less dangerous for high-power applications because humans can perceive it and act to protect their eyes from damage. VLC is a subset at the optical wireless communications technologies.
+
+The technology uses fluorescent lamps (ordinary lamps, not special communications devices) to transmit signals at 10 kbit/s, or LEDs for up to 500 Mbit/s. Low rate[vague] data transmissions at 1 and 2 kilometres (0.6 and 1.2 mi) were demonstrated.[1][2] RONJA achieves full Ethernet speed (10 Mbit/s) over the same distance thanks to larger optics and more powerful LEDs.
+
+Specially designed electronic devices generally containing a photodiode receive signals from light sources,[1] although in some cases a cell phone camera or a digital camera will be sufficient.[3] The image sensor used in these devices is in fact an array of photodiodes (pixels) and in some applications its use may be preferred over a single photodiode. Such a sensor may provide either multi-channel communication (down to 1 pixel = 1 channel) or a spatial awareness of multiple light sources.[1]
+
+VLC can be used as a communications medium for ubiquitous computing, because light-producing devices (such as indoor/outdoor lamps, TVs, traffic signs, commercial displays, car headlights/taillights, etc.[4]) are used everywhere.[3]
+
+Contents  [hide] 
+1 History
+2 See also
+3 References
+4 Further reading
+5 External links
+History[edit]
+The history of Visible Light Communications (VLC) dates back to the 1880s in Washington, D.C. when the Scottish-born scientist Alexander Graham Bell invented the photophone, which transmitted speech on modulated sunlight over several hundred meters. This pre-dates the transmission of speech by radio.
+
+More recent work began in 2003 at Nakagawa Laboratory, in Keio University, Japan, using LEDs to transmit data by visible light. Since then there have been numerous research activities focussed on VLC, notably by Smart Lighting Engineering Centre, Omega Project, COWA, ByteLight, Inc.,D-Light Project, UC-Light Centre, and work at Oxford University.
+
+In 2006, researchers from CICTR at Penn State proposed a combination of power line communication (PLC) and white light LED to provide broadband access for indoor applications.[5] This research suggested that VLC could be deployed as a perfect last-mile solution in future.
+
+In January 2010 a team of researchers from Siemens and Fraunhofer Institute for Telecommunications (Heinrich Hertz Institute in Berlin) demonstrated transmission at 500 Mbit/s with a white LED over a distance of 5 metres (16 ft), and 100 Mbit/s over longer distance using five LEDs.[6]
+
+The VLC standardization process is conducted within IEEE Wireless Personal Area Networks working group (802.15).
+
+In December 2010 St. Cloud, Minnesota was the first to commercially deploy this technology.[7]
+
+In July 2011 a live demonstration of high-definition video being transmitted from a standard LED lamp was shown at TED Global.[8]
+
+Recently, VLC-based indoor positioning system has become an attractive topic. ABI research [1] forecasts that it could be a key solution to unlocking the $5 billion "indoor location market". Publications have been coming from Nakagawa Laboratory,[9][10] COWA at Penn State[11][12] and other researchers around the world.[13][14]
+
+Another recent application is in the world of toys, thanks to cost-efficient and low-complexity implementation, which only requires one microcontroller and one LED as optical front-end.[15]
+
+VLCs can be used for providing security.[16][17] They are especially useful in body sensor networks and personal area networks.
+
+Recently Organic LEDs (OLED) have been used as optical transceivers to build up VLC communication links up to 10 Mbit/s.[18]
+
+See also[edit]
+Optical Wireless Communications
+Fiber-optic communication
+Free space optics
+IrDA — Same principle as VLC but uses infrared light instead of visible light
+Li-Fi
+RONJA
+Free-space optical communication
+References[edit]
+^ Jump up to: a b c "Image Sensor Communication". VLC Consortium.[dead link]
+Jump up ^ "Lighthouse Sub Project". VLC Consortium.[dead link]
+^ Jump up to: a b "About Visible Light Communication". VLC Consortium.[dead link]
+Jump up ^ "Intelligent Transport System – Visible Light Communication". VLC Consortium.[dead link]
+Jump up ^ M. Kavehrad, P. Amirshahi, “Hybrid MV-LV Power Lines and White Light Emitting Diodes for Triple-Play Broadband Access Communications,” IEC Comprehensive Report on Achieving the Triple Play: Technologies and Business Models for Success, ISBN 1-931695-51-2, pp. 167-178, January 2006. See publication here
+Jump up ^ "500 Megabits/Second with White LED Light" (Press release). Siemens. Jan 18, 2010.
+Jump up ^ "St. Cloud first to sign on for new technology" (Press release). St. Cloud Times. Nov 19, 2010.
+Jump up ^ http://www.ted.com/talks/harald_haas_wireless_data_from_every_light_bulb.html
+Jump up ^ Yoshino, M.; Haruyama, S.; Nakagawa, M.; , "High-accuracy positioning system using visible LED lights and image sensor," Radio and Wireless Symposium, 2008 IEEE , vol., no., pp.439-442, 22-24 Jan. 2008. ByteLight filed a patent on a light positioning system using LED digital pulse recognition in March 2012. In January 2013 it publicly piloted this technology for the first time at the Museum of Science in Boston. See publication here
+Jump up ^ S. Horikawa, T. Komine, S. Haruyama and M. Nakagawa,”Pervasive Visible Light Positioning System using White LED Lighting”, IEICE, CAS2003-142,2003.
+Jump up ^ Zhang, W.; Kavehrad, M.; , "A 2-D indoor localization system based on visible light LED," Photonics Society Summer Topical Meeting Series, 2012 IEEE , vol., no., pp.80-81, 9–11 July 2012. See publication here
+Jump up ^ Lee, Yong Up; Kavehrad, Mohsen; , "Long-range indoor hybrid localization system design with visible light communications and wireless network," Photonics Society Summer Topical Meeting Series, 2012 IEEE , vol., no., pp.82-83, 9–11 July 2012. See publication here
+Jump up ^ Panta, K.; Armstrong, J.; , "Indoor localisation using white LEDs," Electronics Letters. vol.48, no.4, pp.228-230, February 16, 2012.See publication here
+Jump up ^ Hyun-Seung Kim; Deok-Rae Kim; Se-Hoon Yang; Yong-Hwan Son; Sang-Kook Han; , "Indoor positioning system based on carrier allocation visible light communication," Quantum Electronics Conference & Lasers and Electro-Optics (CLEO/IQEC/PACIFIC RIM), 2011 , vol., no., pp.787-789, Aug. 28 2011-Sept. 1 2011. See publication here
+Jump up ^ Giustiniano D.; Tippenhauer N. O.; Mangold, S.; , "Low-Complexity Visible Light Networking with LED-to-LED Communication" Wireless Days, 2012 IFIP, (pp. 1-8), 21-23 Nov. 2012., Best Paper Award See publication here
+Jump up ^ Xin Huang; Bangdao Chen; A.W. Roscoe; , "Multi−Channel Key Distribution Protocols Using Visible Light Communications in Body Sensor Networks", Computer Science Student Conference 2012, (pp. 15), Nov. 2012., See publication here
+Jump up ^ Xin Huang; Shangyuan Guo; Bangdao Chen; A.W. Roscoe; , "Bootstrapping body sensor networks using human controlled LED−camera channels", Internet Technology And Secured Transactions‚ 2012 International Conferece For, (pp. 433-438), Dec. 2012., See publication here
+Jump up ^ P. Haigh, F. Bausi, Z. Ghassemlooy, I. Papakonstantinou, H. Le Minh, C. Fléchon, and F. Cacialli, "Visible light communications: real time 10 Mb/s link with a low bandwidth polymer light-emitting diode," Opt. Express 22, 2830-2838 (2014) See publication here

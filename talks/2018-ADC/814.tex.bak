@@ -1,0 +1,16 @@
+
+reject
+
+Summary: 
+This demonstration paper presents a system called Fouilla, aiming at providing to end users a meaningful browsing experience among the billions of triples of DBpedia. The authors propose an approach that uses both structural and semantic information, and allows users with no SPARQL experience to browse Knowledge Bases made of several
+billions of triples. The system may be useful in practice, but its techniques are not seriously developed, mostly adopting existing solutions or very simple.
+
+S1. The authors introduce the concept of topical browsing, which has a piratical need.
+S2. The demonstration consists of sufficient cases: pagerank filtering, browsing efficiency, topic exploration and entity view.
+
+
+W1. As an introduced concept, topical browsing needs a formal definition.
+W2. The techniques used in the system are not seriously developed, mostly adopting existing solutions or very simple. 
+W3. The paper needs a significant refinement - too many typos.
+
+ 

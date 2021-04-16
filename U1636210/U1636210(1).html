@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>社会媒体大数据感知与分析关键技术</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>社会媒体大数据感知与分析关键技术 <small>(项目批准号U1636210)</small><img
+                            src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAAoADwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD2aiio5poraF555FjijUs7scBQOpJoAJ54raB555FjijUs7scBQOpJrxzxT8Ub+61iP+w5jBZ2r5Ukf8fB9WH932/HrjB8TPFWo6hOmnpG1rpzDeqswEk/ozLnKj0BA9fp59Xo4fDq3NIhs+h/CPi+y8V6f5kWIruMDz7cnlT6j1HvXQ18x6Xqd5o+oxX1hMYZ4zww6H2PqK+gPDniSHW7ZEl8uK+ESySQq2QVPR19VP8AnsThXoezd1sNO5uUUUVylEc00VvC800ixxxqWd2OAoHUk14l498fS+Ip2sNPdo9Mjbr0M5Hc+3oPxPt0/j618Z+I5m0/T9Jlj0yNuT50YM5Hc/N09B+J9uJHw28XEgf2Ow9/Pj/+Kruw8Kcfek1chtixabP46uJbqxKLqqx77qGRtqygYHmKegJ4yD3ORxwNz4f+DPD/AIj0S6lvZmkvtzII0k2mEY4bA6/jxVk/CW5We2iguZIkSIm7udwPmsf4Y0HYdMsRnNMvvDniu2s30zw5oD6fZOMSzG5iNxcf77BuB/sjitJVFJcsJW/QLHKyWuneGiftTQ6lqi9LdTugtz/tn+Nv9kcepPSs2HXNSt9YGrx3cgvQ+7zc8n2x0xjjHTHFbP8Awrbxf/0B2/7/AMX/AMVR/wAK38Xf9Adv+/8AH/8AFVup0+skxanrHgvxraeK7La22HUIl/fQZ6/7S+o/l/PqK8GsfAvjjTb2K8s9NkhnibcjrPHkf+PV7Fouo6rPpkbavpMlreD5ZFRkZW/2hhuh9K86tTjF3g9C0zXrh/GGpa/Y+IYTpPmSQRWEk00CjhxuwSP9oA5H0oorKm7PYGaun3V/J8PY7p5phfNYFjL5e9w+3rt7nPaqHw/1HULwX8V9NPcrF5ZSd3LRsSpyF3KGB9Qc49qKKvTllp1ANGGtXvjPU5Jbmf7Ba3RRUM5VcbOAE2ncM99wpfGV9dW2rWUUt9e2GmNBIzT2aZZph91ScHt270UU4u9RaB0Om0uR5dLtZJGlZmiUlpkCOeOrKOh9qt0UVgxn/9k=" />
+                    </h1>
+                </div>
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
+                            data-toggle="tab">首页</a>
+                    </li>
+                    <li role="presentation"><a href="#content" aria-controls="content" role="tab"
+                            data-toggle="tab">研究内容</a></li>‘
+                    <li role="presentation"><a href="#status" aria-controls="status" role="tab"
+                            data-toggle="tab">执行情况</a></li>
+                    <li role="presentation"><a href="#output" aria-controls="output" role="tab" data-toggle="tab">论文 &
+                            专利</a>
+                    </li>
+                    <li role="presentation"><a href="#dataset" aria-controls="dataset" role="tab"
+                            data-toggle="tab">开源数据集</a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">项目概述</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p><code>NSFC-通用技术联合基金重点支持项目（执行期限：2017.1 ~ 2020.12）</code></p>
+                                <p>
+                                    对社会舆情的及时监测、有效引导，对维护社会稳定、促进国家发展具有重要意义。社会网络庞大的用户和数据使得社会事件的预测和分析成为可能。然而，大数据环境下的社会媒体数据来源开放、内容复杂和动态实时，并且社会公共舆情事件关联复杂、突发性强、影响广泛。因此，当前的数据感知和分析技术仍然存在着效率低和准确性差等问题。对社会媒体大数据进行高效的感知和分析仍然面临巨大的挑战。本项目将围绕感知和分析的两个关键问题，即准确性和可扩展性，从理论方法、关键技术、示范应用三个层面开展研究；研究基于媒体内容的感知建模、基于实体结构的分析挖掘和基于数据汇总的处理平台，提高感知分析的准确性和可扩展性；通过研究预警和溯源突发事件和构建扩充社会公共舆情事件图谱，分析挖掘社会公共事件的关联、演化和发展，从而实现对社会公共事件高效全面的态势感知与决策支持。本项目申请与合作单位长期合作，具有丰富的理论、技术和实践积累。
+                                </p>
+
+                                <p><small>
+                                        The timely monitoring and effective guiding of public sentiment has played an
+                                        important role
+                                        for the maintenance of social stability and the promotion of national
+                                        development.
+                                        Currently, a huge amount of users and their generated data appear in social
+                                        networks. This
+                                        makes it possible to predict and analyze social events through data sensing and
+                                        analysis
+                                        with the big social data. However, social data in this big data era is
+                                        open-sourced,
+                                        content-complex and dynamic, and public social events have intricate
+                                        correlations, burst
+                                        quickly, and have far-reaching consequences. As a result, existing techniques of
+                                        data
+                                        sensing and analysis are still suffering from problems such as the low
+                                        efficiency and poor
+                                        accuracy. Indeed, it remains challenging for effective and efficient data
+                                        sensing and
+                                        analysis of big social data. In this project, we will systematically study the
+                                        theory and
+                                        methods for improving the scalability and accuracy of data sensing and analysis.
+                                        We will
+                                        conduct our research from three aspects: theory, techniques and demonstrations.
+                                        More
+                                        specifically, we will study content based data sensing and modeling, social
+                                        entity structure
+                                        based analysis and mining, and data summarization based processing platform to
+                                        improve the
+                                        accuracy and scalability of sensing and analysis. We will also study
+                                        early-warning and
+                                        source tracking of emergent events, construct and enrich a social event oriented
+                                        knowledge
+                                        graph, and analyze the correlation, evolution and development of public social
+                                        events in
+                                        order to achieve an efficient and comprehensive situation awareness and decision
+                                        supports
+                                        for public social events. The team members of this project come from three
+                                        different
+                                        institutions, which have established long-term collaborations and have
+                                        accumulated a strong
+                                        background for the smooth development of the project, including theory,
+                                        techniques and
+                                        practical experiences.
+                                    </small></p>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">参与单位</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h4 class="media-heading">北京航空航天大学</h4>
+                                        项目依托单位北京航空航天大学计算机学院拥有2个国家级重点实验室、“111引智计划”和大数据国际研究中心等深入的国际合作基础，是计算机科学与技术一级学科、计算机软件与理论国家重点学科单位，是计算机理论研究和软件技术的重要研究基地；近年来承担了国家973计划、自然科学基金创新群体、自然科学重点基金、863高技术计划重点课题、国防预研和国际合作等国家级研究项目，获得国家科技进步奖二等奖4项、部委级奖励20余项；项目依托单位北京航空航天大学经济管理学院是国内最早从事信息系统与决策支持系统研究的单位之一，拥有管理科学与工程博士后流动站；拥有系统管理技术重点实验室、社会计算与社会舆情分析研究中心、大数据资产管理实验室，是大数据计算的重要研究基地。
+                                    </div>
+                                    <div class="media-right">
+                                        <img style="width:70px" src="U1636210/buaa-logo.png" />
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h4 class="media-heading">上海交通大学</h4>
+                                        项目合作单位上海交通大学计算机科学与工程系拥有1个省部共建重点实验室和深入的国际合作基础，是计算机科学与技术一级重点学科单位。近年来承担了国家973计划、自然科学基金重点项目、863高技术计划重点课题和国际合作等国家级研究项目。
+                                    </div>
+                                    <div class="media-right">
+                                        <img style="width:70px" src="U1636210/shjt-logo.png" />
+                                    </div>
+                                </div>
+                                <div class="media">
+
+                                    <div class="media-body">
+                                        <h4 class="media-heading">中国通用技术研究院</h4>
+                                        项目合作单位中国通用技术研究院是经中央批准成立的国家级专业科研机构，主要从事电子信息、生物化学领域应用技术的研究开发，促进相关领域的新技术应用发展，拥有一流的软硬件设施和环境、科研团队和创新文化。自研究院成立以来每年承担数十项国家重点科研任务，每年提供数十项科研成果应用于国家重要领域的重点工作，曾荣获国家级科技奖励十余项，部级科技奖励数百项。
+                                    </div>
+                                    <div class="media-right">
+                                        <img style="width:66px" src="" />
+                                    </div>
+                                </div>
+
+
+                                <br />本项目由三家单位合作共同完成，其中北京航空航天大学为承担单位，上海交通大学和中国通用技术研究院为合作单位。根据队伍的研究基础与工作条件，经过讨论制定主要任务的分工如表所示（其中☆代表为主，◇代表协助合作）。
+                            </div>
+                            <table style="text-align: center;" class="table table-striped table-hover">
+                                <tr>
+                                    <td>
+                                        项目任务
+                                    </td>
+                                    <td>
+                                        北京航空航天大学
+                                    </td>
+                                    <td>
+                                        上海交通大学
+                                    </td>
+                                    <td>
+                                        中国通用技术研究院
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        基于媒体内容的感知建模
+                                    </td>
+                                    <td>
+                                        ☆
+                                    </td>
+                                    <td>
+                                        ◇
+                                    </td>
+                                    <td>
+                                        ◇
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        基于实体结构的分析挖掘
+                                    </td>
+                                    <td>
+                                        ☆
+                                    </td>
+                                    <td>
+                                        ◇
+                                    </td>
+                                    <td>
+                                        ◇
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        基于数据汇总的处理平台
+                                    </td>
+                                    <td>
+                                        ◇
+                                    </td>
+                                    <td>
+                                        ☆
+                                    </td>
+                                    <td>
+                                        ◇
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        面向公共事件的示范应用
+                                    </td>
+                                    <td>
+                                        ◇
+                                    </td>
+                                    <td>
+                                        ◇
+                                    </td>
+                                    <td>
+                                        ☆
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="content">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">主要研究内容</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>本项目开展面向社会媒体大数据的感知与分析关键技术的研究，主要解决感知、分析、处理平台以及面向社会公共舆情事件决策支持的准确性和可扩展性问题。基于海量多源的社会媒体数据，准确感知事件与人物并建模，群智数据集成，利用结构分析方法挖掘社会事件的关联关系，并拓展结构分析挖掘支持增量和时空特性，研究基于数据汇总的处理平台及平台的摘要合并、混合索引和查询优化等关键技术，研发支持突发事件预警溯源以及事件知识图谱的示范应用原型系统，并借助大数据可视化技术对结果进行可视化展示，提供决策支持。主要的研究内容及其关系如图所示：
+                                </p>
+                                <p class="text-center"><img style="max-width: 600px;"
+                                        src="U1636210/关键问题与研究内容.png"></p>
+                                <h3>1. 基于媒体内容的感知建模</h3>
+                                基于媒体内容的感知建模是社交媒体大数据分析的基础。针对社交媒体数据多源异构、事件数量多、人物特征复杂等特点，开展了基于多数据流的在线事件感知、基于信息融合的多维人物感知和面向社会感知的群智数据集成的研究。
+                                </p>
+                                <h4>1.1 基于多数据流的在线事件感知</h4>
+                                多数据流的在线事件感知是指通过分析多源的媒体数据流，利用时空、网络结构、用户情感等特征进行建模，进而实现事件的感知。社会媒体数据是公共事件传播的主要载体之一，不同的媒体往往从不同视角、多个侧面对事件进行多种形式的报道和转载，大量活跃的在线用户又对不同媒体报道的事件进行评论或转发，导致社会媒体数据具有来源开放、内容复杂、动态实时、噪声严重等特性，给准确实时的在线事件感知带来了极大的挑战。我们基于社会媒体的多数据流，以提高准确性和效率为目标，开展在线事件感知的研究，包括基于多数据流的时间特征，结合主题与情感的在线事件的出现、爆发与消亡过程等时间动态演化的感知；基于多数据流的空间特征，对在线事件传播的网络结构、关键节点等路径的感知；考虑多数据流的时空交互因素，构建结合多数据流特征的时序分析及传播路径分析的集成模型，设计准确高效的在线感知算法。
+                                </p>
+                                <h4>1.2 基于信息融合的多维人物感知</h4>
+                                基于信息融合的多维人物感知是通过对多
+                                源海量信息及不同类型的用户行为数据进行融合和结构化，利用用户心理、性格、偏好、影响力等特征实现对人物的感知。随着社会媒体的深入应用，一方面用户数量的急剧增长导致大量不同类型的用户行为数据的产生，另一方面社会媒体的快速增多导致用户数据的来源越来越多、越来越广，同时用户之间关联关系也越来越复杂，这对社会媒体用户的特征刻画及人物感知带来了巨大挑战。我们基于社会媒体中海量用户行为和网络结构的数据，以提高用户感知的准确性和全面性为目标，对用户在社会媒体中的文本、情境、网络结构等信息内容进行融合，并对用户的偏好、性格、心理等隐含特征进行推断，去除冗余和错误数据，实现准确全面的人物感知。
+                                </p>
+                                <h4>1.3 面向社会感知的群智数据集成</h4>
+                                社会媒体内容具有复杂多样、噪声严重等特点，从社会媒体内容中采集并集成数据是感知人物、事件的基础。而社会媒体内容中包含大量复杂的语义信息，单纯利用机器学习、自然语言处理等方法容易造成数据采集的不准确。群智计算是一种基于人类在语义理解方面的先天优势，集成和分析海量非结构化数据的新兴技术。面向社会感知的群智数据集成就是利用群智计算的方法进行数据的监控与采集，同时群体中的每个节点作为“传感器”节点，能够对信息进行选择、分享和传播，并对信息进行监控和回收，为人物和事件的感知、关联关系挖掘、社会舆情分析等提供支持。我们以提高数据集成的准确性为目标，开展了面向社会感知的群智数据集成的研究，设计了一套传感器节点的选择、评价、跟踪及优化模型，进而实现传感器节点对于数据集成的动态反馈和实时更新。
+                                </p>
+                                <h3>2. 基于实体结构的分析挖掘</h3>
+                                基于实体结构的分析挖掘是社会媒体大数据分析的重要手段之一，针对社会媒体数据具有的更新频繁、时空相关和关联复杂等特点，我们从关联分析挖掘、支持增量特性和支持时空特性等方面开展了以下研究：
+                                </p>
+                                <h4>2.1 面向社会事件的关联分析挖掘</h4>
+                                社会媒体数据中可感知的实体种类繁多，社会事件复杂多变，因此，社会事件中的关联关系呈现出开放复杂的特点，例如，不同的参与者在同一事件中扮演不同的角色，事件之间可能存在因果、时序、共指等复杂关联关系。面向社会事件的关联分析挖掘指根据社会事件的特点，充分利用实体和事件的结构化信息，并利用结构化分析方法挖掘实体-事件交互关系以及事件间关联关系。为了保证面向社会事件的关联分析挖掘结果的准确性和可扩展性，我们将进一步研究实体与事件的结构化表示方法，以参与、组织、情感、影响力等为代表的实体-事件交互关系建模与挖掘，以因果、时序、关联、演化、共指等为代表的事件关联关系建模与挖掘，基于结构化分析的关联挖掘方法等方面的内容。
+                                </p>
+                                <h4>2.2 支持增量特性的结构分析挖掘</h4>
+                                社会媒体数据是一类流式数据，涉及大规模动态更新，数据更新后将导致结构特征的变化，例如用户关系网络和事件参与者变动，相应分析挖掘的结果也需要更新，例如用户角色演化。传统方法在数据更新后立即基于全体数据重新计算，这必然不能满足大规模动态数据对计算效率的需求。支持增量特性的结构分析挖掘借助增量思想，数据更新后只需要在更新部分的数据上完成计算，并将更新部分的结果融合至已有结果中，准确高效地得到反映更新数据的分析挖掘结果。为达到准确性与可扩展性之间的最佳平衡，我们将进一步研究增量计算中涉及更新计算、结果融合以及结果准确性度量与评价等方面的内容。
+                                </p>
+                                <h4>2.3 支持时空特征的结构分析挖掘</h4>
+                                时间和空间特性是社会媒体数据中非常重要的两个特征，突发事件预警、事件时序分析以及事件影响力分析等问题都涉及到时空特性。支持时空特性的结构分析挖掘首先将数据中的时间信息与空间信息结合到结构化数据中，扩展实体与事件在时空维度上的特征，并在此基础上做时间、空间或时空相关的结构分析挖掘。为有效利用数据的时空信息，我们将进一步研究支持时空特性的结构数据存储与表示技术，面向时空的准确高效的数据检索、查询以及相关性度量技术，支持时空特性的结构分析挖掘的新
+                                型计算模型及分析方法等方面的内容。</p>
+                                <h3>3. 基于数据汇总的处理平台</h3>
+                                针对大数据多源异构、查询类型复杂等特点，我们研究了可扩展的混合索引、可合并的数据汇总和可自适的查询优化技术。</p>
+                                <h4>3.1 可合并的数据汇总</h4>
+                                可合并的数据汇总是指对数据集合生成一份包含数据某些方面的统计信息的摘要，并提升合并的可扩展性。在大数据环境下，研究可合并的数据汇总具有重要意义。以前的用户查询结果都是从原始数据中提取的，而有了数据摘要，则可以直接从摘要中提取或者近似估算，明显提高查询效率。实现可合并的数据汇总可以适应大数据环境下的数据特点。我们针对可合并的数据汇总将研究聚类（Clustering）的合并，图数据摘要的合并和高维数据中的主成分（Principal
+                                Components）的可合并性等方面。</p>
+                                <h4>3.2 可扩展的混合索引</h4>
+                                可扩展的混合索引是指为提高查询处理效率，对不同类型的数据，如图、时空、文本等建立具有高效、增量、动态可适应等特性的索引。现有的对不同类型数据的索引方法，通常针对不同类型的数据分别建立索引，这样得到的结果存在查询效率低的问题，并且大数据环境下的信息有数据量大、数据类型多等特点，因此建立一个高效可扩展的混合索引具有重要的研究意义。社交网络数据通常以图的形式表示，而社交网络上的多数描述性信息都是以文本的方式表示。因此，我们以提高混合索引效率为目标，首先研究同时支持这两类数据的混合索引。其次，在许多应用中文本数据往往有时间和空间两个维度，如移动社交网络的信息等，并且新的数据不断的增加，如何设
+                                计时空文本结合、支持增量式更新的分布式混合索引仍具有很大的挑战性。因此，我们还将研究时空和文本数据结合的可扩展的混合索引。</p>
+                                <h4>3.3 可自适的查询优化</h4>
+                                在大数据环境下，需要对原有的查询方法进行优化，并研究可自适的查询优化方法。实现可自适的查询优化，对研究新型查询方法，并将这些方法应用到摘要数据上有重大意义。我们将研究现有方法在新条件下的扩展，同时根据应用需求设计新型查询方法，进一步考虑这些查询方法如何应用到摘要数据上，以实现系统在调用查询算法时能够依据具体情况灵活选择查询类型和查询数据（指原始数据或者数据摘要）。第一种情况是研究基于上述索引的新型查询算法。这既包括扩展原有集中式的算法到分布式环境中，也包括设计新型的查询算法。第二种情况是基于摘要的查询算法。上述可合并摘要可以在精度、时间和空间三者之间作出平衡。新的查询算法设计也应该相应地考虑精度、时间和空间三个因素，如对于同一个查询问题，如果我们采用精度优先的摘要，也要相应地采用精度优先的查询算法。
+                                </p>
+                                <h3>4. 面向公共事件的示范应用</h3>
+                                基于媒体内容感知和关联关系挖掘技术，构建事件图谱，实现突发事件的预警和溯源，对深入分析和处理公共事件具有重大意义。然而，公共事件通常具有影响广泛、关联复杂、突发性强、难以预见等特点，给构建事件图谱，预测和溯源突发事件带来了极大的挑战。我们研究了突发事件的预警和溯源、事件图谱的构建和维护和示范应用原型系统开发。
+                                </p>
+                                <h4>4.1 突发事件的预警和溯源</h4>
+                                突发事件预警是指在事件危害发生前，基于媒体内容感知和关联关系挖掘发现事件发生的前兆并及时做出相应决策；突发事件溯源是指在事件发生后，通过分析事件及其关联关系查找事件的起因。突发公共事件的预警可以将可能发生的危险事件或恶化状态扼杀在摇篮期，而突发公共事件的溯源可以查找出事件的起因并支持决策，对保障公众的生命和财产安全，维护国家安全和社会稳定，促进经济的可持续发展具有重大意义。目前突发公共事件的预警方法存在准确性低、实时性差等问题。对突发公共事件的溯源的研究工作还未得到广泛的关注，且存在准确性差、效率低等问题。我们基于社会媒体数据流，以提高预警的准确性和实时性为目标，开展对实时突发事件预警技术的研究，并进一步研究突发事件的溯源技术，准确高效地查找事件的起因，以助于分析和处置突发公共事件和支持决策。
+                                </p>
+                                <h4>4.2 事件图谱的构建和维护</h4>
+                                事件图谱旨在描述真实世界中的各种实体及其关联关系。根据媒体内容感知和关联关系挖掘可以获得大量的实体及其关联关系。由于事件通常具有关联复杂、影响广泛等特点，需要从不同视角、多个侧面对现实世界中的大量实体及其关联关系进行描述，所以构建事件图谱是十分必要的，而且事件图谱为突发公共事件的预警及溯源提供了有效的支撑，有助于实现对事件高效全面的态势感知和决策支持。随着事件数据规模的剧增，传统的构建方法难以适用，准确高效的构建并维护事件图谱成为一个亟待解决的问题。事件图谱的构建与维护旨在基于通过媒体内容感知和关联关系挖掘得到的实体及其关联关系，构建知识图谱并进行维护。我们将针对图谱的实体链接以及知识融合等方面进行进一步的研究。
+                                </p>
+                                <h4>4.3 示范应用原型系统开发</h4>
+                                原型系统可以让用户尽早地检验系统是否满足所提需求，让所有与系统相关的人员对系统达成一致的理解，对分析和改进各项研究成果具有非常重要的作用。我们基于数据汇总的处理平台，开发一个模块化、可扩展、良好用户体验的原型系统，包含媒体内容感知与关联关系挖掘算法库、事件图谱、突发公共事件预警及溯源、可视化的结果展示等模块。使用从各种主流媒体收集到的数据，设计合理的评价指标来验证所提方法的有效性及可行性。针对实际应用的需求进行研究成果的推广，并追踪用户对这些研究成果的反馈信息以不断改进和完善相关技术和方法。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="status">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">项目执行情况</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>
+                                    根据国家自然科学基金-通用技术基础研究联合基金重点项目“社会媒体大数据感知与分析关键技术研究”（编号U1636210）的计划任务书，项目组按照既定研究思路，遵循研究计划，开展了深入研究，现对该项目每年的计划执行情况进行介绍：
+                                </p>
+                                <ol>
+                                    <li>2017年1月至2017年12月，该年度开展了社会媒体大数据的数据采集、信息抽取、数据清洗和结构化等方面工作；深入研究大数据环境下面向特定应用的社会媒体数据感知与分析关键技术，针对数据感知与分析的准确性和可扩展性问题完善解决方案以及详细技术路线；启动课题“基于媒体内容的感知建模”，包括在线事件感知、多维人物感知和群智数据集成等方面；同时还对基于实体结构的分析挖掘和基于数据汇总的处理平台中的部分问题进行了研究并取得初步的成果。
+                                    </li>
+                                    <li>2018年1月至2018年12月，基本完成了“基于媒体内容的感知建模”的相关研究工作；开启了基于实体结构的分析挖掘及基于数据汇总的处理平台的相关研究，包括面向社会事件的关联分析挖掘、支持增量特性和时空特征的结构分析挖掘、可扩展的混合索引、可合并的数据汇总和可自适的查询优化等方面。同时还对突发公共事件的预警溯源和社会公共事件图谱中的部分问题进行了研究并取得初步的成果。
+                                    </li>
+                                    <li>2019年1月至2019年12月，开展课题“基于媒体内容的感知建模”中在线事件感知、多维人物感知和群智数据集成等方面的相关工作；开展课题“基于实体结构的分析挖掘”中面向社会事件的关联分析挖掘、支持增量特性与时空特性的结构分析挖掘相关工作；研究课题“基于数据汇总的处理平台”中可扩展的混合索引、可合并的数据汇总和可自适的查询优化相关关键技术，并结合各个课题研究成果设计开发处理平台；启动课题“面向公共事件的示范应用”，研究文本抽取、人物画像以及事件图谱构建与维护技术。
+                                    </li>
+                                    <li>2020年1月至2020年12月，借助北京航空航天大学、上海交通大学及中国通用技术研究院积累的社会媒体数据、大数据技术和处理平台，开发一套面向社会公共事件的示范应用原型系统。针对社会实际需求，进行应用推广，针对应用反馈结果，完善提出的各类技术和方法；汇总研究成果，准备项目结题。
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">研究目标完成情况</h3>
+                            </div>
+                            <table class="table table-bordered table-hover">
+                                <tr>
+                                    <th><b>预期成果</b></th>
+                                    <th> <b>项目指标</b> </th>
+                                    <th> <b>实际完成情况</b> </th>
+                                </tr>
+                                <tr>
+                                    <td><b>转化应用</b></td>
+                                    <td>2－3项</td>
+                                    <td>7项研究成果得到实际应用</td>
+                                </tr>
+                                <tr>
+                                    <td><b>学术论文</b></td>
+                                    <td> 30 篇以上高质量论文 </td>
+                                    <td> 发表97篇论文，其中包括43篇CCF A类论文，34篇CCF B类论文，中文期刊3篇 </td>
+                                </tr>
+                                <tr>
+                                    <td><b>知识产权</b></td>
+                                    <td> 10 项以上发明专利 </td>
+                                    <td> 申请34项发明专利 </td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2"><b>人才培养</b></td>
+                                    <td> 培养科研骨干 </td>
+                                    <td> 马帅：2019年国家杰青，2017年电子学会科技进步特等奖(8/15)，ICDM 2019候选最佳论文。<br />
+                                        吴俊杰：2017年国家杰青，2018年电子学会技术发明一等奖(2/6)。<br />
+                                        姚斌：2019年国家优青，2019年国家技术发明二等奖(3/6)、2019年上海市技术发明一等奖(3/8)、WISE 2017最佳论文。 <br />
+                                        王静远：2020年北京市抗击新冠肺炎疫情先进个人和北京市优秀共产党员。 </td>
+                                </tr>
+                                <tr>
+                                    <td> 培养10 名博士研究生，12名硕士研究生 </td>
+                                    <td> 培养博士生24人，硕士生39人，5人被评为优秀毕业生 </td>
+                                </tr>
+                                <tr>
+                                    <td><b>数据资源</b></td>
+                                    <td> 开放共享 </td>
+                                    <td> 开源5种9个数据集 </td>
+                                </tr>
+                            </table>
+                            <div class="panel-body">
+
+                                <p>本项目研究计划书中所制定的预期成果如下：（1）服务国家需求：通过本项目的实施，我们预期为有效利用社会媒体大数据提高国家对社会公共事件的感知分析、实时监控、预警溯源的能力提供更加坚实的关键基础技术储备。预计将建成一个社会媒体大数据感知和分析处理的示范平台，并将有2－3项研究成果得到转化和实际应用，满足国家公共事件处理的一些紧迫现实需求。（2）突破关键技术：在数据感知、数据分析、数据挖掘、舆情分析、图搜索等方面形成支撑面向社会公共事件的社会媒体大数据感知与分析的关键技术。通过对基础理论和关键技术的凝练，在相关领域顶级/知名学术期刊（TODS、VLDB
+                                    Journal、TKDE、Geoinformatica、IEEE Transactions on Fuzzy Systems、IEEE Transactions
+                                    on Cybernetics、Data Mining and Knowledge
+                                    Discovery等）和学术会议（SIGMOD、VLDB、ICDE、KDD、AAAI、IJCAI、WWW、WSDM、ICDM、CIKM等）上发表高质量的学术论文30篇以上，并申请专利10项以上。（3）培养优秀人才：以项目成员为骨干，形成一支活跃的面向社会公共事件的社会媒体大数据感知与分析技术研究与应用推广队伍；培养10名博士研究生，12名硕士研究生；与此同时，我们希望通过本项目的实施，进一步加强承担本项目的2个国家重点实验室、2个国际合作联合实验室及多个省部级重点实验室的建设，从而把完成国家重大科研任务与培养优秀人才和建设科研创新基地有机地结合起来，最大限度地发挥国家有限科研经费资源的效能。（4）建设数据资源：通过本项目的实施，我们将建设跨感知源、跨媒体、跨时空、多源异构的大尺度、海量规模、具有代表性的社会感知数据资源和实验验证平台，并向国内外学术界免费共享。这些数据资源将提升我们在本领域研究的起点、影响力和国际竞争力。
+                                </p>
+
+                                <p>在本项目2017-2020执行年间，项目组按照既定研究计划开展科研工作，超过了项目所有预期指标，并取得良好的研究成果。（1）7项科研成果得到实际应用。（2）在学术研究方面，项目组发表学术论文97篇，其中包括CCF
+                                    A类期刊会议论文43篇，CCF
+                                    B类期刊会议论文34篇。（3）在知识产权方面，本项目共申请了34项发明专利；（3）在人才培养方面，本项目负责人共培养博士生24人，硕士生39人，共计63人，5人被评为优秀毕业生。此外，本项目成员吴俊杰2017年获国家自然科学基金委杰出青年基金，马帅2019年获批国家自然科学基金委杰出青年基金，姚斌2019年获批国家自然科学基金委优秀青年基金，王静远2020年获北京市抗击新冠肺炎疫情先进个人，北京市优秀共产党员。姚斌(3/6)的“面向突变型峰值服务的云计算关键技术与系统”2019年获国家技术发明二等奖，姚斌(3/8)的“面向信息管理智能化的云计算系统关键技术与应用”2019年获上海市技术发明一等奖，马帅(8/15)的“飞天云操作系统核心技术及产业化”2017年获电子学会特等奖，吴俊杰(2/6)的“网络空间大数据的行为融合分析方法与技术”2018年获电子学会技术发明一等奖，马帅获ICDM
+                                    2019候选最佳论文，姚斌获WISE
+                                    2017最佳论文。（4）建设数据资源方面：公开数据集5种9个数据集，包括时态图数据、轨迹数据集（包含出租车、卡车、GeoLife用户轨迹）、学术论文重要性评估数据、关系抽取数据、电商场景数据等。
+                                </p>
+
+
+                                <p>本项目围绕社会媒体大数据感知与分析的关键问题，从基于媒体内容的感知建模、基于实体结构的分析挖掘、基于数据汇总的处理平台和面向公共事件的示范应用四个方面开展具体的研究工作。
+                                </p>
+                                <style>
+                                    ol.multilevel {
+                                        counter-reset: section;
+                                        list-style-type: none;
+                                        padding-left: 25px;
+                                    }
+
+                                    li.ml:before {
+                                        counter-increment: section;
+                                        content: counters(section, ".") " ";
+                                    }
+                                </style>
+
+                                <ol class="multilevel">
+                                    <li class="ml">
+                                        在基于媒体内容的感知建模方面，针对社交媒体数据多源异构、事件数量多、人物特征复杂等特点，开展了基于多数据流的在线事件感知、基于信息融合的多维人物感知和面向社会感知的群智数据集成的研究。
+                                        </p>
+                                        <ol class="multilevel">
+                                            <li class="ml">
+                                                在基于多数据流的在线事件感知方面，我们通过分析多源的媒体数据流，利用时空、网络结构、用户情感等特征进行建模，进而实现事件的感知。我们以提高准确性和效率为目标，对在线事件的时间动态演化感知，传播的网络结构、关键节点的感知和结合时序分析及传播路径分析的集成模型三个方面进行了研究。(a)对在线事件的时间动态演化感知方面，我们研究了动态新闻推荐、台湾大选中社会民意信号对候选人支持率影响的动态分析、政治事件的推文对股票市场的短期影响和适应各种市场状态的股票投资策略等。(b)对在线事件传播的网络结构、关键节点的感知方面，我们研究了基于知识图谱的主题生成、社交网络多模态数据情感分析与跨语言情感分类和多层城市网络拓扑特性分析等。(c)对在线事件的结合时序分析及传播路径分析的集成模型方面，我们研究了动态交互网络的欺诈行为检测、假新闻早期传播拓扑特征分析建模和交通流量感知的路网动态定价等。
+                                                </p>
+                                            </li>
+                                            <li class="ml">
+                                                在基于信息融合的多维人物感知方面，我们通过对多源海量信息及不同类型的用户行为数据进行融合和结构化，利用用户心理、性格、偏好、影响力等特征，进而实现对人物的感知。为了提高用户感知的准确性和全面性，我们研究了推断用户偏好和心理特征的个体画像建模以及融合社会媒体信息的群体模式识别等内容。(a)在个体画像建模方面，我们针对用户媒体交互数据和用户移动轨迹数据开展了挖掘与推断，包括兴趣点推荐、人格分析、招聘竞争力分析、城市居民身份识别、产品评论水军检测等。(b)在群体模式识别方面，我们对社会媒体用户转发行为特点、城市交通客流量演化规律、中文语言表达个性化特点、城市劳动力迁移演变现象和城市流行病检测动力学现象展开了研究。
+                                                </p>
+                                            </li>
+                                            <li class="ml">
+                                                在面向社会感知的群智数据集成方面，我们通过利用群智计算的方法进行数据的监控与采集，能够对信息进行选择、分享和传播，并对信息进行监控和回收数据采集。为提高数据集成的准确性，我们研究了面向群智数据集成的模型优化构建和基于群智数据集成的数据预处理技术。(a)在面向群智数据集成的模型优化构建方面，我们提出了面向社交网络信息挖掘的社交传感器感知模型、实时空间众包在线匹配模型、基于群智组合的学者姓名消歧模型和基于集成方法的攻击鲁棒性模型等。(b)在基于群智数据集成的数据预处理技术方面，我们针对数据标注、数据检索和文本翻译展开了研究，包括地标图像标注、移动计算、主题模型、视觉问答、对话生成、地标图像检索、机器翻译和词库生成等问题。
+                                                </p>
+                                            </li>
+                                        </ol>
+                                    </li>
+
+                                    <li class="ml">
+                                        在基于实体结构的分析挖掘方面，针对社会媒体数据具有的更新频繁、时空相关和关联复杂等特点，我们从关联分析挖掘、支持增量和时空特性等方面开展研究。</p>
+                                        <ol class="multilevel">
+                                            <li class="ml">
+                                                在面向社会事件的关联分析挖掘方面，我们根据社会媒体数据实体种类繁多、关系复杂的特点，利用结构化分析方法挖掘实体-事件交互关系以及事件间关联关系。我们对实体与事件的结构化表示方法，实体-事件交互关系建模与挖掘，事件关联关系建模与挖掘，基于结构化分析的关联挖掘方法等内容进行了研究。研究主要分为：(a)在面向社会事件的关联分析挖掘基础技术方面，我们针对应用在实体-事件交互关系、事件关联关系的基础技术展开研究，包括链接预测、异常实体检测、文本匹配、聚类簇数量估计、多源异质组合聚类以及文本和图像分类等技术。(b)在面向社会事件的关联分析挖掘应用方面，我们对基于地理相关性的兴趣点推荐、销售渠道的欺诈行为检测、投资者情绪对股价的影响和投资者行为对股市中共生现象的影响等展开了研究。
+                                                </p>
+                                            </li>
+                                            <li class="ml">
+                                                在支持增量特性方面，我们指根据社会媒体数据更新频繁的特点，借助增量思想，只在数据更新部分上完成计算，并将更新部分的结果融合至已有结果中。为达到准确性与可扩展性之间的最佳平衡，我们研究了增量计算中涉及更新计算、结果融合以及结果准确性度量与评价等内容，研究主要分为：(a)在支持增量特性的精确结构分析挖掘方面，我们提出了一个支持增量的学术论文排序方法和一个连续检测突发地区的精确解决方案。(b)在支持增量特性的近似结构分析挖掘方面，我们提出了多种连续检测突发地区的近似解决方案、单次遍历轨迹简化方法和在线轨迹压缩方法。
+                                                </p>
+                                            </li>
+                                            <li class="ml">
+                                                在支持时空特性方面，我们根据社会媒体数据具有时空相关的特点，在结构化数据中扩展实体与事件在时空维度上的特征，并在此基础上做时间、空间或时空相关的结构分析挖掘。为有效利用数据的时空信息，我们研究了支持时空特性的结构数据存储与表示技术，面向时空的准确高效的数据检索、查询以及相关性度量技术，支持时空特性的结构分析挖掘的新型计算模型及分析方法等内容，研究主要分为：(a)在时空数据的存储与检索方面，我们分别针对最短路径查询和密集时态子图查询、基于用户历史旅行数据的路径推荐等问题，提出了高效的检索方法。(b)在支持时空特性的新型计算模型及分析方面，我们提出了时间序列分析、时态网络嵌入表示和考虑时空特征的救护车动态重定位调度等模型。
+                                                </p>
+                                            </li>
+                                        </ol>
+                                    </li>
+
+                                    <li class="ml">
+                                        针对大数据多源异构、查询类型复杂等特点，我们研究了可扩展的混合索引、可合并的数据汇总和可自适的查询优化技术。</p>
+                                        <ol class="multilevel">
+                                            <li class="ml">
+                                                可合并的数据汇方面，总是指对数据集合生成一份包含数据某些方面的统计信息的摘要，并提升合并的可扩展性。为了适应大数据环境下规模巨大、更新频繁等数据特点，我们研究了聚类的可合并，图数据摘要的可合并性两个方面。（a）针对聚类可合并的数据汇总，我们研究了最近邻居和最远邻居查询，包括空间路网数据下的弹性聚合最近邻查询、高维数据下的最近邻搜索、单色反向最远邻居和双色反向最远邻居查询。(b)针对图数据摘要可合并性的数据汇总，我们研究了图中的最短路径上top-k关键节点查询，以及对通过缓存技术来提高图数据摘要数据汇总的可扩展性。
+                                                </p>
+                                            </li>
+                                            <li class="ml">
+                                                可扩展的混合索引方面，我们通过对不同类型的数据，如图、时空、文本、图像等建立具有高效、增量、动态可适应等特性的索引，从而提高媒体大数据查询处理效率。我们分别研究了支持不同类型数据的索引、支持空间-文本的混合索引和支持图像-文本的混合索引三个方面。(a)在支持不同类型数据的索引方面，我们分别研究了高维数据下数据密集型应用程序的高效查询、图结构数据的学术信息的检索和排名。(b)在空间-文本的混合索引方面，我们研究了空间关键字的高效查询、基于位置的top-k局部最流行关键词，并在空间-文本的混合索引的可扩展性方面探索了混合索引的分布式解决方案。(c)在图像-文本的混合索引方面，针对传统图像检索方法中存在的语义鸿沟，我们设计了结合图像-文本的混合索引支持基于内容和文本的图像检索。
+                                                </p>
+                                            </li>
+                                            <li class="ml">
+                                                在大数据环境下，需要对原有的查询方法进行优化，并研究可自适查询优化方法。我们根据不同查询任务设计了新型查询方法，分别研究了时态数据下和空间文本数据下的可自适的查询优化。(a)对于时态数据下的查询优化，我们研究了时间旅行、时态聚合、时态连接等及相关的分布式算法。(b)针对空间文本数据下的查询优化，我们研究了空间文本数据流上可合并摘要的top-k流行词的查询。此外，我们考虑了文本的语义信息和轨迹信息的关联查询，研究了语义轨迹的相似性连接。
+                                                </p>
+                                            </li>
+                                        </ol>
+                                    </li>
+
+                                    <li class="ml">
+                                        针对公共事件具有影响广泛、关联复杂、突发性强、难以预见等特点，我们基于媒体内容感知和关联关系挖掘技术，研究了突发事件的预警和溯源、事件图谱的构建和维护以及示范应用原型系统开发。
+                                        </p>
+                                        <ol class="multilevel">
+                                            <li class="ml">
+                                                突发事件的预警和溯源方面，突发事件预警是指在事件危害发生前，基于媒体内容感知和关联关系挖掘发现事件发生的前兆并及时做出相应决策；突发事件溯源是指在事件发生后，通过分析事件及其关联关系查找事件的起因。为提高突发时间的预警的准确性和实时性、溯源的准确性和高效性，我们分别研究了社交网络中推文流行性预测和城市内流行病传播路径的预测和分析；社交网络中基于事件关联的故事脉络生成和城市危险品运输与存储的时空与因果分析。
+                                                </p>
+                                            </li>
+                                            <li class="ml">
+                                                事件图谱的构建和维护方面，我们根据媒体内容感知和关联关系挖掘可以获得大量的实体及其关联关系，基于事件通常具有关联复杂、影响广泛等特点，需要通过事件图谱从不同视角、多个侧面对现实世界中的大量实体及其关联关系进行描述。为准确高效的构建并维护事件图，支撑突发公共事件的预警及溯源，我们分别研究了实体关系抽取、社会事件的关联分析挖掘、短文本主题模型、基于知识图谱的主题生成和基于热点事件的知识图谱等，最终构建并维护了一个事件图谱系统。
+                                                </p>
+                                            </li>
+                                            <li class="ml">
+                                                示范应用原型系统方面，我们整合了已有的各项研究成果，可以让用户和系统相关人员尽早检验并一致理解系统，这对分析和改进这些成果具有非常重要的作用。我们针对实际应用需求进行研究成果的推广，结合了前文所提的媒体内容感知、关联关系挖掘、事件图谱、突发公共事件预警及溯源等研究成果和支持原型系统的关键技术，开发了特定社会网站任务人物图谱分析系统、Ring系统和疫情预测系统等，并根据反馈不断改进和完善相关技术和方法。我们的系统在国家信息安全管理中心、国务院电子政务办“互联网+”监管平台等部门得到了广泛应用。
+                                                </p>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div role="tabpanel" class="tab-pane" id="output">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">基于媒体内容的感知建模</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>基于媒体内容的感知建模是社交媒体大数据分析的基础。针对社交媒体数据多源异构、事件数量多、人物特征复杂等特点，开展了基于多数据流的在线事件感知、基于信息融合的多维人物感知和面向社会感知的群智数据集成的研究。相关成果发表在SIGKDD、ICDM、AAAI、IJCAI、ACL、EMNLP
+                                    ICDE、DASFAA等国际知名会议，
+                                    TKDE、TKDD、KAIS、TMC、TITS、TNNLS、TOIS、TIP等国际知名期刊，共发表论文43篇，其中包括CCF A类17篇，CCF
+                                    B类15篇，并申请发明专利13项。</p>
+
+                                <ol>
+                                    <li>
+                                        Hui
+                                        Zhang（硕士生）#; Xu Chen; Shuai Ma#*; <a
+                                            href="U1636210/mashuai/2019-ICDM-Dynamic%20News%20%20Recommendation%20with%20Hierarchical%20Attention%20Network.pdf">Dynamic
+                                            News Recommendation with Hierarchical Attention Network</a>, 2019 IEEE
+                                        International Conference on Data Mining (ICDM), Beijing, China,
+                                        2019-11-8至2019-11-11.</li>
+
+                                    </li>
+                                    <li>
+                                        Zheng
+                                        Xie（博士生）#; Guannan Liu*; Junjie Wu#; Yong Tan;
+                                        <a
+                                            href="U1636210/wujunjie/2018-EPJ%20Data%20Science-Big%20Data%20Would%20Not%20Lie%20Prediction%20of%20the%202016%20Taiwan%20Election%20via%20Online%20Heterogeneous%20Information.pdf">Big
+                                            Data Would Not Lie: Prediction of the 2016 Taiwan Election via Online
+                                            Heterogeneous Information</a>, EPJ Data Science, 2018, 7(1).
+
+                                    </li>
+                                    <li>
+                                        Kun
+                                        Yuan（博士生）#; Guannan Liu*; Junjie Wu#*; Hui
+                                        Xiong; <a
+                                            href="U1636210/wujunjie/2020-ACM%20Transactions%20on%20Intelligent%20Systems%20and%20Technology-Dancing%20with%20Trump%20in%20the%20Stock%20Market%20A%20Deep%20Information%20Echoing%20Model.pdf">Dancing
+                                            with Trump in the Stock Market: A Deep Information Echoing Model</a>, ACM
+                                        Transactions on Intelligent Systems and Technology, 2020, 11(5).
+
+                                    </li>
+                                    <li>
+                                        Jingyuan Wang; Yang Zhang; Ke Tang; Junjie Wu*; Zhang Xiong; <a
+                                            href="U1636210/wangjingyuan/2019-SIGKDD-AlphaStock%20A%20Buying%20Winners-and-Selling-Losers%20Investment%20Strategy%20using%20Interpretable%20Deep%20Reinforcement%20Attention%20Network.pdf">AlphaStock:
+                                            A Buying Winners-and-Selling-Losers Investment Strategy using Interpretable
+                                            Deep Reinforcement Attention Networks</a>, The 25th ACM SIGKDD International
+                                        Conference on Knowledge Discovery and Data Mining (SIGKDD), Anchorage, AK, USA,
+                                        2019-8-4至2019-8-8.
+                                    </li>
+                                    <li>
+                                        JieXu; Feiran Huang; Xiaoming Zhang*; Senzhang Wang; Chaozhuo
+                                        Li; Zhoujun Li; Yueying He; <a
+                                            href="U1636210/zhangxiaoming/2019-KBS-Visual-textual%20sentiment%20classification%20with%20bi-directional%20multi-level.pdf">Visual-textual
+                                            sentiment classification with bi-directional multi-level attention
+                                            networks</a>,
+                                        Knowledge-Based Systems (KBS), 2019, 178：61-73.
+                                    </li>
+                                    <li>
+                                        Feiran Huang; Xiaoming Zhang*; Zhonghua Zhao; Zhoujun Li; <a
+                                            href="U1636210/zhangxiaoming/2019-TIP-Bi-Directional%20Spatial-Semantic%20Attention%20Networks%20for%20Image-Text%20Matching.pdf">Bi-directional
+                                            spatial-semantic attention networks for image-text matching</a>, IEEE
+                                        Transactions on Image Processing (TIP), 2019, 28(4)：2008-2020.
+                                    </li>
+                                    <li>
+                                        Deqing Wang; Baoyu Jing; Chenwei Lu; Junjie Wu; Guannan Liu;
+                                        Chenguang Du; Fuzhen Zhuang*; <a
+                                            href="U1636210/wujunjie/2020-IEEE%20Transactions%20on%20Neural%20Networks%20and%20Learning%20Systems-Coarse%20Alignment%20of%20Topic%20and%20Sentiment%20A%20Unified%20Model%20for%20Cross-Lingual%20Sentiment%20Classification.pdf">Coarse
+                                            Alignment of Topic and Sentiment: A Unified Model for Cross-Lingual
+                                            Sentiment
+                                            Classification</a>, IEEE Transactions on Neural Networks and Learning
+                                        Systems
+                                        (TNNLS), 2020, 1(1).
+                                    </li>
+                                    <li>
+
+                                        Yuan
+                                        Zuo; Junjie Wu*; Hui Zhang; Deqing Wang; Ke Xu; <a
+                                            href="U1636210/wujunjie/2018-TKDE-Complementary%20Aspect-based%20Opinion%20Mining..pdf">Complementary
+                                            Aspect-based Opinion Mining</a>, IEEE Transactions on Knowledge and Data
+                                        Engineering (TKDE), 2018, 30(2)：249-262.
+
+
+                                    </li>
+                                    <li>
+                                        Xiaoqian Hu（博士生）#; Chao Wang*; Junjie Wu#*; H.Eugene Stanley; <a
+                                            href="U1636210/wujunjie/2020-Cites-Understanding%20Interurban%20Networks_A%20Multiplexity-based%20View.pdf">Understanding
+                                            Interurban Networks from a Multiplexity Perspective</a>, Cities, 2020,
+                                        99(1).
+
+                                    </li>
+                                    <li>
+                                        Hao Lin（博士生）#; Guannan Liu*; Junjie Wu#*; Yuan Zuo; Xin Wan; Hong Li; <a
+                                            href="U1636210/wujunjie/2020-TKDE-Fraud%20Detection%20in%20Dynamic%20Interaction%20Network.pdf">Fraud
+                                            Detection in Dynamic Interaction Network</a>, IEEE Transactions on Knowledge
+                                        and Data Engineering (TKDE), 2020, 32(10)：1936-1950.
+                                    </li>
+                                    <li>
+                                        Guannan Liu; Jia Guo; Yuan
+                                        Zuo*; Junjie Wu; Ren-yong Guo; <a
+                                            href="U1636210/wujunjie/2020-Knowledge%20and%20Information%20Systems-Fraud%20Detection%20via%20Behavioral%20Sequence%20Embedding.pdf">Fraud
+                                            Detection via Behavioral Sequence Embedding</a>, Knowledge and Information
+                                        Systems (KAIS), 2020, 62(7)：2685-2708.
+
+                                    </li>
+                                    <li>
+                                        Lisi Chen; Shuo Shang*; Bin Yao; Jing Li; <a
+                                            href="U1636210/yaobin/2020-AAAI-Pay%20Your%20Trip%20for%20Traffic%20Congestion-%20Dynamic%20Pricing%20in%20Traffic-Aware%20Road%20Networks.pdf">Pay
+                                            Your Trip for Traffic Congestion: Dynamic Pricing in Traffic-Aware Road
+                                            Networks</a>, The 34th AAAI Conference on Artificial Intelligence (AAAI),
+                                        New
+                                        York, NY, USA, 2020-2-7至2020-2-12.
+
+                                    </li>
+                                    <li>
+                                        Zilong
+                                        Zhao; Jichang Zhao; Yukie Sano; Orr levy; Hideki Takayasu; Misako Takayasu;
+                                        Daqing Li*; Junjie Wu*; Shlomo Havlin; <a
+                                            href="U1636210/wujunjie/2020-EPJ%20Data%20Science-Fake%20News%20Propagate%20Differently%20from%20Real%20News%20Even%20at%20Early%20Stages%20of%20Spreading.pdf">Fake
+                                            News Propagates Differently from Real News Even at Early Stages of
+                                            Spreading</a>,
+                                        EPJ Data Science, 2020, 9(1).
+                                    </li>
+                                    <li>
+                                        Renjun Hu（博士生）#; Xinjiang Lu#; Chuanren Liu; Yanyan Li; Hao Liu; Jingjing Gu;
+                                        Shuai Ma#*; Hui Xiong*; <a
+                                            href="U1636210/mashuai/2020-IJCAI-Why%20We%20Go%20Where%20We%20Go_Profiling%20User%20Decisions%20on%20Choosing%20POIs.pdf">Why
+                                            We Go Where We Go: Profiling User Decisions on Choosing POIs</a>, The 29th
+                                        International Joint Conference on Artificial Intelligence (IJCAI), Yokohama,
+                                        Japan(online), 2021-1-7至2021-1-15.
+
+                                    </li>
+                                    <li>
+                                        Renjun Hu（博士生）#; Yanchi
+                                        Liu; Yanyan Li; Jingbo Zhou; Shuai Ma#*; Hui Xiong*; <a
+                                            href="U1636210/mashuai/2020-TKDD-Exploiting%20User%20Preference%20and%20Mobile%20Peer%20Influence%20for%20Human%20Mobility%20Annotation.pdf">Exploiting
+                                            User Preference and Mobile Peer Influence for Human Mobility
+                                            Annotation</a>.,
+                                        ACM Transactions on Knowledge Discovery from Data (TKDD), 2020, 14(6)：1-18.
+
+                                    </li>
+                                    <li>
+                                        Cuixin
+                                        Yuan（博士生）#; Ying Hong; Junjie Wu#*; <a
+                                            href="U1636210/wujunjie/2020-Behaviour%20Information%20Technology-Does%20Facebook%20Activity%20Reveal%20your%20Dark%20Side%20Using%20Online%20Language%20Features%20to%20Understand%20an%20Individual’s%20Dark%20Triad%20and%20Needs.pdf">Does
+                                            Facebook Activity Reveal your Dark Side? Using Online Language Features to
+                                            Understand an Individual’s Dark Triad and
+                                            Needs</a>, Behaviour &amp; Information Technology, 2020, 1(1).
+
+                                    </li>
+                                    <li>
+                                        Hao
+                                        Lin（博士生）#; Hengshu Zhu*; Junjie Wu#*; Yuan
+                                        Zuo; Chen Zhu; Hui Xiong; <a
+                                            href="U1636210/wujunjie/2020-ACM%20Transactions%20on%20Information%20Systems-Enhancing%20Employer%20Brand%20Evaluation%20with%20Collaborative%20Topic%20Regression%20Models..pdf">Enhancing
+                                            Employer Brand Evaluation with Collaborative Topic Regression Models</a>,
+                                        ACM
+                                        Transactions on Information Systems (TOIS), 2020, 38(4).
+
+                                    </li>
+                                    <li>
+                                        Jingyuan Wang; Xu He; Ze Wang; Junjie Wu*; Nicholas Jing Yuan;
+                                        Xing Xie; Zhang Xiong; <a
+                                            href="U1636210/wangjingyuan/2018-AAAI-CD-CNN%20A%20Partially%20Supervised%20Cross-Domain%20Deep%20Learning%20Model%20for%20Urban%20Resident%20Recognition.pdf">CD-CNN:
+                                            A Partially Supervised Cross-Domain Deep Learning Model for Urban Resident
+                                            Recognition</a>, The 32nd AAAI Conference on Artiﬁcial Intelligence (AAAI),
+                                        New Orleans, USA, 2018-2-2至2018-2-7.
+
+                                    </li>
+                                    <li>
+                                        Zhiang
+                                        Wu; Jie Cao*; Yaqiong Wang; Youquan Wang; Lu Zhang; Junjie Wu*; <a
+                                            href="U1636210/wujunjie/2020-IEEE%20Transactions%20on%20Cybernetics-hPSD_%20A%20Hybrid%20PU-learning-based%20Spammer%20Detection%20Model%20for%20Product%20Reviews.%20.pdf">hPSD:
+                                            A Hybrid PU-learning-based Spammer Detection Model for Product Reviews</a>,
+                                        IEEE Transactions on Cybernetics, 2020, 50(4)：1595-1606.
+
+                                    </li>
+                                    <li>
+                                        Jinhai Zhu（硕士生）#;
+                                        Shuai Ma#*; Hui Zhang; Chunming Hu; Xiong Li; <a
+                                            href="U1636210/mashuai/2018-DASFAA-Incorporating%20User%20Grouping%20into%20Retweeting%20Behavior%20Modeling%20.pdf">Incorporating
+                                            User Grouping into Retweeting Behavior Modeling</a>, The 23rd International
+                                        Conference on Database Systems for Advanced Applications (DASFAA), Gold Coast,
+                                        Australia, 2018-5-21至2018-5-24.
+
+                                    </li>
+                                    <li>
+                                        Bowen
+                                        Du#; Hao Peng（博士生）#*; Senzhang Wang#; Md
+                                        Zakirul Alam Bhuiyan; Lihong Wang; Qiran Gong; Lin Liu; Jing Li; <a
+                                            href="U1636210/2020-TITS-Deep%20Irregular%20Convolutional%20Residual%20LSTM%20for%20Urban%20Traffic%20Passenger%20Flows%20Prediction.pdf">Deep
+                                            Irregular Convolutional Residual LSTM for Urban Traffic Passenger Flows
+                                            Prediction</a>, IEEE Transactions on Intelligent Transportation Systems
+                                        (TITS),
+                                        2020, 21(3)：972-985.
+
+                                    </li>
+                                    <li>
+                                        Cuixin Yuan（博士生）#; Ying Hong; Junjie Wu#*; <a
+                                            href="U1636210/wujunjie/2020-User%20Modeling%20and%20User-adapted%20Interaction-Personality%20Expression%20and%20Recognition%20in%20Chinese%20Language%20Usage.pdf">Personality
+                                            Expression and Recognition in Chinese Language Usage</a>, User Modeling and
+                                        User-adapted Interaction, 2020, 1(1).
+
+                                    </li>
+                                    <li>
+                                        Xiaoqian Hu（博士生）#; Jichang Zhao; Hong Li; Junjie Wu#*; <a
+                                            href="U1636210/wujunjie/2019-Physica%20A%20Statal%20Mechanics%20and%20its%20Applications-Online%20footprints%20of%20workforce%20migration%20and%20economic%20implications.pdf">Online
+                                            Footprints of Workforce Migration and Economic Implications</a>, Physica A:
+                                        Statistical Mechanics and its Applications, 2019, 528(0).
+
+                                    </li>
+                                    <li>
+                                        Jingyuan Wang; Junjie Wu*; Ze
+                                        Wang; Fei Gao; Zhang Xiong; <a
+                                            href="U1636210/wangjingyuan/2020-TKDE-Understanding%20Urban%20Dynamics%20via%20Context-Aware%20Tensor%20Factorization%20with%20Neighboring%20Regularization.pdf">Understanding
+                                            Urban Dynamics via Context-AwareTensor Factorization with Neighboring
+                                            Regularization</a>, IEEE Transactions on Knowledge and Data Engineering
+                                        (TKDE),
+                                        2020, 32(11)：2269-2283.
+
+
+                                    </li>
+                                    <li>
+                                        Kun Yuan（博士生）#; Guannan Liu*; Junjie Wu#; <a
+                                            href="U1636210/wujunjie/2019-Information%20Processing%20and%20Management-Whose%20Posts%20to%20Read%20Finding%20Social%20Sensors%20for%20Effective%20Information%20Acquisition.pdf">Whose
+                                            Posts to Read: Finding Social Sensors for Effective Information
+                                            Acquisition</a>,
+                                        Information Processing and Management, 2019, 56(4)：1204-1219.
+
+                                    </li>
+                                    <li>
+                                        Tianshu Song; Yongxin Tong*;
+                                        Libin Wang; Jieying She; Bin Yao; Lei Chen; Ke Xu; <a
+                                            href="U1636210/yaobin/2017-ICDE-Trichromatic%20Online%20Matching%20in%20Real-Time%20Spatial%20Crowdsourcing.pdf">Trichromatic
+                                            Online Matching in Real-Time Spatial Crowdsourcing</a>, The 33rd IEEE
+                                        International Conference on Data Engineering (ICDE), California, USA,
+                                        2017-4-19至2017-4-22.
+
+                                    </li>
+                                    <li>
+                                        Dongsheng Luo（本科生）#; Shuai Ma#*; Yaowei Yan; Chunming Hu; Xiang Zhang; Jinpeng
+                                        Huai; <a
+                                            href="U1636210/mashuai/2021-TKDE-A%20Collective%20Approach%20to%20Scholar%20Name%20Disambiguation.pdf">A
+                                            Collective Approach to Scholar Name Disambiguation</a>, IEEE Transactions on
+                                        Knowledge and Data Engineering (TKDE).
+
+                                    </li>
+                                    <li>
+                                        Jingyuan Wang; Yufan Wu;
+                                        Mingxuan Li; Xin Lin; Junjie Wu*; Chao Li; <a
+                                            href="U1636210/wangjingyuan/2020-KDD-Interpretability%20is%20a%20Kind%20of%20Safety%20An%20Interpreter-based%20Ensemble%20for%20Adversary%20Defense.pdf">Interpretability
+                                            is a kind of Safety: An Interpreter-based Ensemble for Adversary
+                                            Defense</a>,
+                                        The 26th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (SIGKDD),
+                                        San Diego, CA, USA(online), 2020-8-23至2020-8-27.
+
+                                    </li>
+                                    <li>
+                                        Xiaoming Zhang; Zhonghua Zhao;
+                                        Haijun Zhang*; Senzhang Wang; Zhoujun Li; <a
+                                            href="U1636210/zhangxiaoming/2018-KBS-Unsupervised%20geographically%20discriminative%20feature%20learning%20for%20landmark%20tagging.pdf">Unsupervised
+                                            geographically discriminative feature learning for landmark tagging</a>,
+                                        Knowledge-Based Systems (KBS), 2018, 149(1)：143-154.
+
+                                    </li>
+                                    <li>
+                                        Renjun Hu（博士生）#; Jingbo Zhou; Xinjiang Lu; Hengshu Zhu; Shuai Ma#*; Hui Xiong*;
+                                        <a
+                                            href="U1636210/mashuai/2021-TMC-NCF%20A%20Neural%20Context%20Fusion%20Approach%20to%20Raw%20Mobility%20Annotation.pdf">NCF:
+                                            A Neural Context Fusion Approach to Raw Mobility Annotation</a>, IEEE
+                                        Transactions on Mobile Computing (TMC).
+
+                                    </li>
+                                    <li>
+                                        Yun Liu（博士生）#; Xiaoming Zhang#; Zhiyun Zhao*; Bo
+                                        Zhang; Lei Cheng; Zhoujun Li; <a
+                                            href="U1636210/zhangxiaoming/2020-TCYB-ALSA_%20Adversarial%20Learning%20of%20Supervised%20Attentions%20for%20Visual%20Question%20Answering.pdf">ALSA:
+                                            Adversarial Learning of Supervised Attentions for Visual Question
+                                            Answering</a>,
+                                        IEEE Transactions on Cybernetics, 2020, 1(1).
+
+                                    </li>
+                                    <li>
+                                        Yun Liu（博士生）#; Xiaoming Zhang#*; Feiran Huang; Zhibo Zhou; Zhonghua Zhao;
+                                        Zhoujun Li; <a
+                                            href="U1636210/zhangxiaoming/2020-KBS-Visual%20Question%20Answering%20via%20Combining%20Inferential%20Attention%20and%20Semantic%20Space%20Mapping.pdf">Visual
+                                            Question Answering via Combining Inferential Attention and Semantic Space
+                                            Mapping</a>, Knowledge-Based Systems (KBS), 2020, 207：106339.
+
+
+                                    </li>
+                                    <li>
+                                        Yun Liu（硕士生）#; Xiaoming Zhang#*; Feiran Huang; Zhoujun Li; <a
+                                            href="U1636210/zhangxiaoming/2018-CIKM-Adversarial%20Learning%20of%20Answer-Related%20Representation%20for%20Visual%20Question%20Answering.pdf">Adversarial
+                                            Learning of Answer-Related Representation for Visual Question Answering</a>,
+                                        The 27th ACM International Conference on Information and Knowledge Management
+                                        (CIKM), Turin, Italy, 2018-10-22至2018-10-26.
+
+                                    </li>
+                                    <li>
+                                        Yun Liu（博士生）#; Xiaoming Zhang#*; Feiran Huang; Lei Cheng; Zhoujun Li; <a
+                                            href="U1636210/zhangxiaoming/2020-TNNLS-Adversarial%20Learning%20With%20Multi-Modal%20Attention%20for%20Visual%20Question%20Answering.pdf">Adversarial
+                                            Learning With Multi-Modal Attention for Visual Question Answering</a>, IEEE
+                                        Transactions on Neural Networks and Learning Systems (TNNLS), 2020, 1(1).
+
+                                    </li>
+                                    <li>
+                                        Bo Zhang; Xiaoming Zhang; <a
+                                            href="U1636210/zhangxiaoming/2019-EMNLP-Hierarchy%20Response%20Learning%20for%20Neural%20Conversation%20Generation.pdf">Hierarchy
+                                            Response Learning for Neural Conversation Generation</a>, The 2019
+                                        Conference
+                                        on Empirical Methods in Natural Language Processing and the 9th International
+                                        Joint Conference on Natural Language Processing (EMNLP-IJCNLP), Hong Kong,
+                                        China, 2019-11-3至2019-11-7.
+
+                                    </li>
+                                    <li>
+                                        Xiaoming Zhang*; Senzhang Wang;
+                                        Zhoujun Li; Shuai Ma; <a
+                                            href="U1636210/zhangxiaoming/2018-TCYB-Landmark%20Image%20Retrieval%20by%20Jointing%20Feature%20Refinement%20and%20Multi-modal%20Classifier%20Learning.pdf">Landmark
+                                            Image Retrieval by Jointing Feature Refinement and Multi-modal Classifier
+                                            Learning</a>, IEEE Transactions on Cybernetics, 2018, 48(6)：1682-1695. SCIE.
+
+                                    </li>
+                                    <li>
+                                        Shuo Ren（博士生）#; Zhirui Zhang#; Shujie Liu; Ming Zhou; Shuai Ma#; <a
+                                            href="U1636210/mashuai/2019-AAAI-Unsupervised%20%20Neural%20Machine%20Translation%20with%20SMT%20as%20Posterior%20Regularization.pdf">Unsupervised
+                                            Neural Machine Translation with SMT as Posterior Regularization</a>, The
+                                        33rd
+                                        AAAI Conference on Artificial Intelligence (AAAI), Honolulu, Hawaii, USA,
+                                        2019-1-27至2019-2-1.
+
+
+                                    </li>
+                                    <li>
+                                        Shuo Ren（博士生）#*; Yu Wu; Shujie Liu; Ming Zhou; Shuai Ma#; <a
+                                            href="U1636210/mashuai/2019-EMNLP-Explicit%20Cross-lingual%20Pre-training%20for%20Unsupervised%20Machine%20Translation.pdf">Explicit
+                                            Cross-lingual Pre-training for Unsupervised Machine Translation</a>, The
+                                        2019
+                                        Conference on Empirical Methods in Natural Language Processing and the 9th
+                                        International Joint Conference on Natural Language Processing (EMNLP-IJCNLP),
+                                        Hong Kong, China, 2019-11-3至2019-11-7.
+
+                                    </li>
+                                    <li>
+                                        Shuo Ren（博士生）#*; Yu Wu; Shujie Liu; Ming Zhou; Shuai
+                                        Ma#; <a
+                                            href="U1636210/mashuai/2020-ACL-A%20Retrieve-and-Rewrite%20Initialization%20Method%20for%20Unsupervised%20Machine%20Translation.pdf">A
+                                            Retrieve-and-Rewrite Initialization Method for Unsupervised Machine
+                                            Translation</a>,
+                                        The 58th Annual Meeting of the Association for Computational Linguistics (ACL),
+                                        Seattle Washington USA(online), 2020-7-5至2020-7-10.
+
+                                    </li>
+                                    <li>
+                                        Shuo Ren（博士生）#*; Shujie Liu; Ming Zhou; Shuai Ma#; <a
+                                            href="U1636210/mashuai/2020-ACL-A%20Graph-based%20Coarse-to-fine%20Method%20for%20Unsupervised%20Bilingual%20Lexicon%20Induction.pdf">A
+                                            Graph-based Coarse-to-fine Method for Unsupervised Bilingual Lexicon
+                                            Induction</a>,
+                                        The 58th Annual Meeting of the Association for Computational Linguistics (ACL),
+                                        Seattle, Washington, USA(online), 2020-7-5至2020-7-10.
+
+                                    </li>
+                                    <li>
+                                        Shuo Ren（博士生）#; Wenhu Chen; Shujie Liu; Mu Li; Ming Zhou; Shuai Ma#; <a
+                                            href="U1636210/mashuai/2018-ACL-Triangular%20Architecture%20for%20Rare%20Language%20Translation.pdf">Triangular
+                                            Architecture for Rare Language Translation</a>, The 56th Annual Meeting of
+                                        the
+                                        Association for Computational Linguistics (ACL), Melbourne, Australia,
+                                        2018-7-15至2018-7-20.
+                                    </li>
+                                    <li>
+                                        Bin Guo; Yasan Ding; Yueheng Sun; Shuai Ma; Ke Li; Zhiwen Yu; <a
+                                            href="U1636210/mashuai/2021-FCS-The%20Mass%20Fake%20News%20and%20Cognition%20Security.pdf">The
+                                            Mass, Fake News, and Cognition Security</a>, Frontiers of Computer Science
+                                        (FCS), 2020, 15(3).
+                                    </li>
+                                    <li>
+                                        Wenyu Du; Junjie Wu; Shanshi Liu*; Raymond A.Hackney; <a
+                                            href="U1636210/wujunjie/2019-Information%20and%20Management-Effective%20Organizational%20Improvisation%20in%20Information%20System%20Development%20Insights%20from%20Tencent%20Messaging%20System%20Development.pdf">Effective
+                                            Organizational Improvisation in Information System Development: Insights
+                                            from the
+                                            Tencent Messaging System Development</a>, Information and Management, 2020,
+                                        56(4)：614-624.
+                                    </li>
+                                </ol>
+                                申请专利列表：
+                                <ol>
+                                    <li>
+                                        张震; 刘冠男; 张亮; 林浩; 吴俊杰; 马欢; 缪亚男, 一种基于协同网络表示学习的电信异常检测方法, 2019-3-15, 中国,
+                                        201811367747.5.
+                                    </li>
+                                    <li>
+                                        吴俊杰; 孙运动; 袁石, 一种基于语义的特定任务文本关键词提取方法, 2017-9-22, 中国, 201710383289.3.
+                                    </li>
+                                    <li>
+                                        万辛; 李鹏; 刘冠男; 孙旭东; 曲金铭; 沈亮; 刘发强; 倪善金; 吴俊杰, 电信网络诈骗事件的剧本提取方法以及装置, 2020-6-4, 中国,
+                                        202010501138.5.
+                                    </li>
+                                    <li>
+                                        左源; 吴俊杰; 李文娟; 刘冠男; 袁石; 林浩; 张志豪; 李丰志, 基于不同人格特征的文本观点挖掘方法, 2019-10-10, 中国,
+                                        201910959523.1.
+                                    </li>
+                                    <li>
+                                        刘春阳; 张旭; 王鹏; 李红; 吴俊杰; 张翔宇; 陈志鹏; 解峥; 宋慧慧, 综合多通道数据来源的网络舆情热度评估方法及装置, 2020-4-20, 中国,
+                                        202010310036.5.
+                                    </li>
+                                    <li>
+                                        万辛; 刘冠男; 林浩; 张亮; 吴俊杰; 安茂波; 李鹏; 沈亮; 高圣翔, 基于无监督学习的诈骗呼叫序列检测方法, 2019-4-26, 中国,
+                                        201910344174.2.
+                                    </li>
+                                    <li>
+                                        赵忠华; 吴俊杰; 解峥; 袁翠欣; 孙小宁; 李欣; 万欣欣, 一种互联网多源异质数据融合的选举预测方法, 2018-9-6, 中国,
+                                        201811038860.9.
+                                    </li>
+                                    <li>
+                                        万辛; 刘冠男; 李鹏; 安茂波; 林浩; 吴俊杰; 高圣翔; 孙晓晨; 虞宇琪; 郭佳, 一种基于分解聚合的电信诈骗电话的分类检测方法, 2017-6-28,
+                                        中国, 201710508428.0.
+                                    </li>
+                                    <li>
+                                        马帅; 张晖; 陈旭, 一种基于层次注意力网络的动态新闻推荐方法, 2019-4-16, 中国, 201910302363.3.
+                                    </li>
+                                    <li>赵忠华; 吴俊杰; 赵志云; 袁石; 王禄恒; 左源; 付培国; 万欣欣; 李欣; 王涵菲, 面向微博用户的心理画像方法, 2019-5-7, 中国,
+                                        201910375599.X.
+                                    </li>
+                                    <li>
+                                        马帅; 朱金海; 张晖; 刘骁; 张振宇; 胡春明, 一种微博用户兴趣特征的提取方法, 2017-11-15, 中国, 201711126633.7.
+                                    </li>
+                                    <li>
+                                        赵忠华; 吴俊杰; 赵志云; 葛自发; 孙小宁; 张冰; 王欣欣; 李欣; 袁钟怡; 孙立远; 付培国; 王禄恒; 左源; 李丰志; 李英汉; 户中方,
+                                        基于BERT模型和K近邻的敏感信息识别方法及系统, 2020-4-8, 中国, 202010269087.8.
+                                    </li>
+
+                                    <li>
+                                        付培国; 赵忠华; 李红; 王禄恒; 万欣欣; 李欣; 何润龙; 张志豪; 吴俊杰; 袁昆; 林浩, 一种基于群智传感器的网络空间群体性事件感知与检测方法,
+                                        2019-4-30, 中国, 201910360276.3.
+
+
+                                    </li>
+                                </ol>
+
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">基于实体结构的分析挖掘</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>针对社会媒体数据具有的更新频繁、时空相关和关联复杂等特点，我们从关联分析挖掘、支持增量特性和支持时空特性等方面开展研究。相关成果发表在SIGKDD、ICDE、VLDB、AAAI、IJCAI、CIKM、DASFAA、ICDM等国际知名会议，
+                                    TKDE、VLDBJ、TFS、KAIS、IEEE Transactions on Cybernetics、ACM Transactions on Intelligent
+                                    Systems and Technology、International Journal of Forecasting、Economic
+                                    Modelling和中文期刊《软件学报》、《管理科学学报》等国内外知名期刊，共发表论文28篇，其中包括CCF A类15篇，CCF B类8篇，中文期刊2篇，并申请发明专利9项。</p>
+
+                                <ol>
+                                    <li>
+                                        Liang
+                                        Duan（博士生）#; Shuai Ma#*; Charu Aggarwal; Tiejun
+                                        Ma; Jinpeng Huai; <a
+                                            href="U1636210/mashuai/2017-TKDE-An%20Ensemble%20Approach%20to%20Link%20Prediction.pdf">An
+                                            Ensemble Approach to Link Prediction</a>, IEEE Transactions on Knowledge and
+                                        Data Engineering (TKDE), 2017, 29(11)：2402-2416. SCIE. 
+
+                                    </li>
+                                    <li>
+
+                                        Mengxiao
+                                        Zhu（博士生）#; Charu Aggarwal; Shuai Ma#*; Hui
+                                        Zhang; Jinpeng Huai; <a
+                                            href="U1636210/mashuai/2017-CIKM-Outlier%20Detection%20in%20Sparse%20Data%20with%20Factorization%20Machines.pdf">Outlier
+                                            Detection in Sparse Data with Factorization Machines</a>, The 26th ACM
+                                        International Conference on Information and Knowledge Management (CIKM),
+                                        Singapore, 2017-11-06至2017-11-10. 
+
+                                    </li>
+                                    <li>
+                                         
+
+                                        Zhongbin
+                                        Xie（硕士生）#*; Shuai Ma#; <a
+                                            href="U1636210/mashuai/2019-IJCAI-Dual-View%20Variational%20Autoencoders%20for%20Semi-Supervised%20Text%20Matching.pdf">Dual-View
+                                            Variational Autoencoders for Semi-Supervised Text Matching</a>, The 28th
+                                        International Joint Conference on Artificial Intelligence (IJCAI), Macao,
+                                        China, 2019-8-10至2019-8-16. 
+
+                                    </li>
+                                    <li>
+
+                                        Liang
+                                        Duan（博士生）#; Shuai Ma#*; Charu Aggarwal; Saket
+                                        Sathe; <a
+                                            href="U1636210/mashuai/2020-KAIS-Improving%20Spectral%20Clustering%20with%20Deep%20Embedding,%20Cluster%20Estimation%20and%20Metric%20Learning.pdf">Improving
+                                            Spectral Clustering with Deep Embedding, Cluster Estimation and Metric
+                                            Learning</a>, Knowledge and Information Systems (KAIS), 2020, 1(1). 
+                                    </li>
+                                    <li>
+                                        Liang
+                                        Duan（博士生）#; Charu Aggarwal; Shuai Ma#*; Saket
+                                        Sathe; <a
+                                            href="U1636210/mashuai/2019-ICDM-Improving%20Spectral%20Clustering%20with%20Deep%20Embedding%20and%20Cluster%20Estimation.pdf">Improving
+                                            Spectral Clustering with Deep Embedding and Cluster Estimation</a>, 2019
+                                        IEEE
+                                        International Conference on Data Mining (ICDM), Beijing, China,
+                                        2019-11-8至2019-11-11. 
+
+
+                                    </li>
+                                    <li>
+                                        Hongfu Liu; Junjie Wu*; Tongliang Liu; Dacheng
+                                        Tao; Yun Fu; <a
+                                            href="U1636210/wujunjie/2017-TKDE-Spectral%20Ensemble%20Clustering%20via%20Weighted%20K-Means%20Theoretical%20and%20Practical%20Evidence.pdf">Spectral
+                                            Ensemble Clustering via Weighted K-Means: Theoretical and Practical
+                                            Evidence</a>,
+                                        IEEE Transactions on Knowledge and Data Engineering (TKDE), 2017,
+                                        29(5)：1129-1143. 
+                                    </li>
+                                    <li>
+                                        Junjie Wu; Zhiang Wu*; Jie Cao; Hongfu Liu;
+                                        Guoqing Chen; Yanchun Zhang; <a
+                                            href="U1636210/wujunjie/2017-IEEE%20Transactions%20on%20Fuzzy%20Systems-Fuzzy%20Consensus%20Clustering%20with%20Applications%20on%20Big%20Data.pdf">Fuzzy
+                                            Consensus Clustering with Applications on Big Data</a>, IEEE Transactions on
+                                        Fuzzy Systems (TFS), 2017, 25(6)：1430-1445. 
+
+
+                                    </li>
+                                    <li>
+                                        Deqing
+                                        Wang; Chenwei Lu; Junjie Wu*; Hongfu Liu; Wenjie Zhang; Fuzhen Zhuang; Hui
+                                        Zhang; <a
+                                            href="U1636210/wujunjie/2020-IEEE%20Transactions%20on%20Cybernetics-Softly%20Associative%20Transfer%20Learning%20for%20Cross-domain%20Classification.pdf">Softly
+                                            Associative Transfer Learning for Cross-domain Classification</a>, IEEE
+                                        Transactions on Cybernetics, 2020, 50(11)：4709-4721.
+                                        
+
+                                    </li>
+                                    <li>
+                                        Jingyuan
+                                        Wang; Kai Feng; Junjie Wu*; <a
+                                            href="U1636210/wangjingyuan/2019-AAAI-SVM-based%20Deep%20Stacking%20Networks.pdf">SVM-based
+                                            Deep Stacking Networks</a>, The 33rd AAAI Conference on Artificial
+                                        Intelligence
+                                        (AAAI), Honolulu, Hawaii, USA, 2019-1-27至2019-2-1.
+                                        
+
+                                    </li>
+                                    <li>
+                                        Ping
+                                        Luo; Kai Shu; Junjie Wu*; Li Wan; Yong Tan; <a
+                                            href="U1636210/wujunjie/2020-ACM%20Transactions%20on%20Intelligent%20Systems%20and%20Technology-Exploring%20Correlation%20Network%20for%20Cheating%20Detection.pdf">Exploring
+                                            Correlation Network for Cheating Detection</a>, ACM Transactions on
+                                        Intelligent
+                                        Systems and Technology, 2020, 11(1). 
+
+
+                                    </li>
+                                    <li>
+                                        Wei
+                                        Liu; Zhi-Jie Wang*; Bin Yao; Mengdie Nie; Jing Wang; Rui Mao; Jian Yin*; <a
+                                            href="U1636210/yaobin/2018-DASFAA-Geographical%20relevance%20model%20for%20long%20tail%20point-of-interest%20recommendation.pdf">Geographical
+                                            Relevance Model for Long Tail Point-of-Interest Recommendation</a>, The 23rd
+                                        International Conference on Database Systems for Advanced Applications
+                                        (DASFAA), Gold Coast, Australia, 2018-5-21至2018-5-24.
+                                        
+
+                                    </li>
+                                    <li>
+                                        Hui
+                                        Bu; Wenjin Tang; Junjie Wu*; <a
+                                            href="U1636210/wujunjie/2019-Economic%20Modelling-Time-varying%20Comovement%20and%20Changes%20of%20Comovement%20Structure%20in%20the%20Chinese%20Stock%20Market%20A%20Causal%20Network%20Method.pdf">Time-varying
+                                            Comovement and Changes of Comovement Structure in the Chinese Stock Market:
+                                            A
+                                            Causal Network Method</a>, Economic Modelling, 2019, 81：181-204. 
+
+                                    </li>
+                                    <li>
+                                        Yelin
+                                        Li（博士生）#; Hui Bu*; Jiahong Li; Junjie Wu#; <a
+                                            href="U1636210/wujunjie/2020-International%20Journal%20of%20Forecasting-The%20Role%20of%20Text-extracted%20Investor%20Sentiment%20in%20Chinese%20Stock%20Price%20Prediction%20with%20the%20Enhancement%20of%20Deep%20Learning.pdf">The
+                                            Role of Text-extracted Investor Sentiment in Chinese Stock Price Prediction
+                                            with the Enhancement of Deep Learning</a>, International Journal of
+                                        Forecasting, 2020, 36(4)：1541-1562. 
+                                    </li>
+                                    <li>
+                                        Shuai
+                                        Ma; Chen Gong; Renjun Hu*; Dongsheng Luo; Chunming Hu*; Jinpeng Huai; <a
+                                            href="U1636210/mashuai/2018-ICDE-Query%20Independent%20Scholarly%20Article%20Ranking.pdf">Query
+                                            Independent Scholarly Article Ranking</a>, The 34th IEEE International
+                                        Conference on Data Engineering (ICDE), Paris, France, 2018-4-16至2018-4-19. 
+
+                                    </li>
+                                    <li>
+                                        Kaiyu Feng; Tao Guo; Gao Cong*; Sourav S.
+                                        Bhowmick; Shuai Ma*; <a
+                                            href="U1636210/mashuai/2020-TKDE-SURGE%20Continuous%20Detection%20of%20Bursty%20Regions%20Over%20a%20Stream%20of%20Spatial%20Objects.pdf">SURGE:
+                                            Continuous Detection of Bursty Regions Over a Stream of Spatial
+                                            Objects</a>.,
+                                        IEEE Transactions on Knowledge and Data Engineering (TKDE), 2020,
+                                        32(11)：2254-2268. 
+                                    </li>
+                                    <li>
+                                        Kaiyu Feng; Tao Guo; Gao Cong; Sourav S.
+                                        Bhowmick; Shuai Ma; <a
+                                            href="U1636210/mashuai/2018-ICDE-SURGE%20Continuous%20Detection%20of%20Bursty%20Regions%20Over%20a%20Stream%20of%20Spatial%20Objects.pdf">SURGE:
+                                            Continuous Detection of Bursty Regions over a Stream of Spatial Objects</a>,
+                                        The 34th IEEE International Conference on Data Engineering (ICDE), Paris,
+                                        France, 2018-4-16至2018-4-19. 
+
+
+                                    </li>
+                                    <li>
+                                        左一萌（硕士生）#; 林学练*; 马帅#; 姜家豪; <a href="U1636210/mashuai/2018-JOS-一种路网感知的在线轨迹压缩方法.pdf">一种路网感知的在线轨迹压缩方法</a>, 软件学报, 2018, 29(3)：734-755. 
+                                    </li>
+                                    <li>
+                                        Xuelian
+                                        Lin; Jiahao Jiang; Shuai Ma*; Yimeng Zuo; Chunming Hu*; <a
+                                            href="U1636210/mashuai/2019-VLDBJ-One-pass%20trajectory%20simplification%20using%20the%20synchronous%20Euclidean%20distance.pdf">One-Pass
+                                            Trajectory Simplification Using the Synchronous Euclidean Distance</a>, The
+                                        VLDB Journal, 2019, 28(6)：897-921. 
+                                    </li>
+                                    <li>
+                                        Xuelian
+                                        Lin; Shuai Ma*; Han Zhang; Tianyu Wo; Jinpeng Huai; <a
+                                            href="U1636210/mashuai/2017-VLDB-One-Pass%20Error%20Bounded%20Trajectory%20Simplification.pdf">One-Pass
+                                            Error Bounded Trajectory Simplification</a>, The 43rd International
+                                        Conference
+                                        on Very Large Databases (VLDB), Germany, 2017-03-01至2017-03-01. 
+                                    </li>
+                                    <li>
+
+
+                                        Shuai
+                                        Ma*; Renjun Hu; Luoshu Wang; Xuelian Lin; Jinpeng Huai; <a
+                                            href="U1636210/mashuai/2020-TKDE-An%20Efficient%20Approach%20to%20Finding%20Dense%20Temporal%20Subgraphs..pdf">An
+                                            Efficient Approach to Finding Dense Temporal Subgraphs</a>, IEEE
+                                        Transactions
+                                        on Knowledge and Data Engineering (TKDE), 2020, 32(4)：645-658. SCIE. 
+                                    </li>
+                                    <li>
+                                        Shuai
+                                        Ma*; Renjun Hu; Luoshu Wang; Xuelian Lin; Jinpeng Huai; <a
+                                            href="U1636210/mashuai/2017-ICDE-Fast%20Computation%20of%20Dense%20Temporal%20Subgraphs.pdf">Fast
+                                            Computation of Dense Temporal Subgraphs</a>, The 33rd IEEE International
+                                        Conference on Data Engineering (ICDE), California, USA, 2017-4-19至2017-4-22.
+                                        
+
+                                    </li>
+                                    <li>
+                                        Shuai
+                                        Ma*; Kaiyu Feng; Jianxin Li; Haixun Wang; Gao Cong; Jinpeng Huai; <a
+                                            href="U1636210/mashuai/2017-ICDE-Proxies%20for%20shortest%20path%20and%20distance%20queries.pdf">Proxies
+                                            for Shortest Path and Distance Queries</a>, The 33rd IEEE International
+                                        Conference on Data Engineering (ICDE), California, USA, 2017-4-19至2017-4-22.
+                                        
+
+
+                                    </li>
+                                    <li>
+                                        Lisi
+                                        Chen; Shuo Shang*; Christian S. Jensen; Bin Yao; Zhiwei Zhang; Ling Shao; <a
+                                            href="U1636210/yaobin/2019-SIGKDD-Effective%20and%20Efficient%20Reuse%20of%20Past%20Travel%20Behavior%20for%20Route%20Recommendation.pdf">Effective
+                                            and Efficient Reuse of Past Travel Behavior for Route Recommendation</a>,
+                                        The
+                                        25th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining
+                                        (SIGKDD), Anchorage, AK, USA, 2019-8-4至2019-8-8.
+                                        
+
+
+                                    </li>
+                                    <li>
+                                        Yuan
+                                        Zuo; Guannan Liu*; Hao Lin; Jia Guo; Xiaoqian Hu; Junjie Wu; <a
+                                            href="U1636210/wujunjie/2018-KDD-Embedding%20Temporal%20Network%20via%20Neighborhood%20Formation.pdf">Embedding
+                                            Temporal Network via Neighborhood Formation</a>, The 24th ACM SIGKDD
+                                        International Conference on Knowledge Discovery &amp; Data Mining (SIGKDD),
+                                        London, UK, 2018-8-19至2018-8-23. 
+
+                                    </li>
+                                    <li>
+                                        Jingyuan
+                                        Wang; Zhen Peng*; Xiaoda Wang; Chao Li; Junjie Wu; <a
+                                            href="U1636210/wangjingyuan/2020-TFS-Deep%20Fuzzy%20Cognitive%20Maps%20for%20Interpretable%20Multivariate%20Time%20Series%20Prediction.pdf">Deep
+                                            Fuzzy Cognitive Maps for Interpretable Multivariate Time Series
+                                            Prediction</a>,
+                                        IEEE Transactions on Fuzzy Systems (TFS), 2020, 1(1). 
+                                    </li>
+                                    <li>
+                                        Jingyuan
+                                        Wang; Ze Wang; Jianfeng Li; Junjie Wu*; <a
+                                            href="U1636210/wangjingyuan/2018-KDD-Multilevel%20Wavelet%20Decomposition%20Network%20for%20Interpretable%20Time%20Series%20Analysis.pdf">Multilevel
+                                            Wavelet Decomposition Network for Interpretable Time Series Analysis</a>,
+                                        The
+                                        24th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data
+                                        Mining (SIGKDD), London, UK, 2018-8-19至2018-8-23.
+                                        
+                                    </li>
+                                    <li>
+                                        Lixiao Zheng; Shuai Ma*; Yuanyang Wang; Gang Lin; <a
+                                            href="U1636210/mashuai/2020-The%20Computer%20Journal-String%20Generation%20for%20Testing%20Regular%20Expressions.pdf">String
+                                            Generation for Testing Regular Expressions</a>, The Computer Journal, 2020,
+                                        63(1)：41-65.
+                                    </li>
+                                    <li>
+                                        刘冠男; 曲金铭; 李小琳*; 吴俊杰; <a
+                                            href="U1636210/wujunjie/2020-管理科学学报-基于深度强化学习的救护车动态重定位调度研究_刘冠男.pdf">基于深度强化学习的救护车动态重定位调度研究</a>,
+                                        管理科学学报, 2020, 23(2)：39-53. 
+
+                                    </li>
+                                </ol>
+                                申请专利列表：
+                                <ol>
+                                    <li>
+                                        马帅; 朱孟笑; 张晖; 怀进鹏, 一种稀疏数据异常检测方法及装置, 2017-11-24, 中国, 201710508648.3.
+                                    </li>
+                                    <li>
+                                        马帅; 李佳; 胡春明; 刘旭东; 怀进鹏, 一种应用于社交网络中的动态图匹配查询方法, 2017-12-26, 中国, 201711435481.9.
+                                    </li>
+                                    <li>
+                                        刘冠男; 吴俊杰; 吴孟其, 基于数据共现关系的深度聚类方法及系统, 2019-12-23, 中国, 201911337783.1.
+                                    </li>
+                                    <li>
+                                        刘玮; 吴俊杰; 李超; 左源; 纪玉春; 袁石, 基于层次判别树的多标签科研论文的分类方法, 2019-9-18, 中国, 201910881086.6.
+                                    </li>
+                                    <li>
+                                        王卿; 刘春阳; 包秀国; 张旭; 王萌; 李雄; 吴俊杰; 蒋丽娜, 一种基于异质数据的人物相似度刻画方法, 2017-9-14, 中国,
+                                        201710827978.9.
+                                    </li>
+                                    <li>
+                                        马帅; 刘叔正, 一种基于近邻自编码器的近邻异常检测系统, 2020-11-10, 中国, 202011243520.7.
+                                    </li>
+                                    <li>
+                                        马帅; 张钟熙; 李博, 一种面向控制过程的异常检测系统, 2020-11-16, 中国, 202011276874.1.
+                                    </li>
+                                    <li>
+                                        赵忠华; 吴俊杰; 赵志云; 鲁骁; 袁昆; 袁钟怡; 郭鲁华, 一种微博事件信息传播的连续动态预测方法, 2017-9-18, 中国,
+                                        201710843010.5.
+                                    </li>
+                                    <li>
+                                        王静远; 陈超; 吴俊杰; 熊璋, 多源数据融合的移动轨迹生成模型的时空模式挖掘方法, 2019-1-8, 中国, 201811095472.4.
+
+                                    </li>
+                                </ol>
+
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">基于数据汇总的处理平台</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>针对大数据多源异构、查询类型复杂等特点，我们研究了可扩展的混合索引、可合并的数据汇总和可自适的查询优化技术。相关研究成果发表在ICDE、VLDB、AAAI、WSDM、DASFAA、DEXA、WISE等国际知名会议，
+                                    VLDBJ、TKDE、JCST、Geoinformatica等国际知名期刊，共发表论文16篇，其中包括CCF A类8篇，CCF B类5篇，并申请发明专利7项。</p>
+
+                                <ol>
+                                    <li>
+                                        Zhongpu
+                                        Chen（博士生）#; Bin Yao#*; Zhi-jie Wang; Xiaofeng
+                                        Gao; Shuo Shang; Shuai Ma; Minyi Guo; <a
+                                            href="U1636210/yaobin/2021-TKDE-Flexible%20Aggregate%20Nearest%20Neighbor%20Queries%20and%20its%20Keyword-Aware%20Variant%20on%20Road%20Networks.pdf">Flexible
+                                            Aggregate Nearest Neighbor Queries and its Keyword-Aware Variant on Road
+                                            Networks</a>, IEEE Transactions on Knowledge and Data Engineering (TKDE).
+                                        
+                                    </li>
+                                    <li>
+                                        Bin
+                                        Yao; Zhongpu Chen; Xiaofeng Gao; Shuo Shang*; Shuai Ma; Minyi Guo; <a
+                                            href="U1636210/yaobin/2018-ICDE-Flexible%20aggregate%20nearest%20neighbor%20queries%20in%20road%20networks.pdf">Flexible
+                                            Aggregate Nearest Neighbor Queries in Road Networks</a>, The 34th IEEE
+                                        International Conference on Data Engineering (ICDE), Paris, France,
+                                        2018-4-16至2018-4-19. 
+                                    </li>
+                                    <li>
+                                        Mengdie
+                                        Nie; Zhi-Jie Wang*; Chunjing Gan; Zhe Quan; Bin Yao; Jian Yin; <a
+                                            href="U1636210/yaobin/2019-AAAI-an%20improved%20hierarchical%20datastructure%20for%20nearest%20neighbor%20search.pdf">An
+                                            Improved Hierarchical Datastructure for Nearest Neighbor Search</a>, The
+                                        33rd
+                                        AAAI Conference on Artificial Intelligence (AAAI), Honolulu, Hawaii, USA,
+                                        2019-1-27至2019-2-1. 
+
+                                    </li>
+                                    <li>
+                                        Xiao-Jun
+                                        Xu; Jin-Song Bao*; Bin Yao*; Jing-Yu Zhou; Fei-Long Tang; Min-Yi Guo; Jian-Qiu
+                                        Xu; <a
+                                            href="U1636210/yaobin/2017-JCST-Reverse%20Furthest%20Neighbors%20Query%20in%20Road%20Networks.pdf">Reverse
+                                            Furthest Neighbors Query in Road Networks</a>, Journal of Computer Science
+                                        and
+                                        Technology (JCST), 2017, 32(1)：155-167. 
+
+                                    </li>
+                                    <li>
+                                        Jing Wang*; Zichen Liu; Shuai Ma*; Nikos
+                                        Ntarmos; Peter Triantafillou; <a
+                                            href="U1636210/mashuai/2018-VLDB-GC%20%20A%20Graph%20Caching%20System%20for%20Subgraph%20Supergraph%20Queries.pdf">GC:
+                                            A Graph Caching System for Subgraph/Supergraph Queries</a>, The 44th
+                                        International Conference on Very Large Data Bases (VLDB), Rio de Janeiro,
+                                        Brazil, 2018-8-27至2018-8-31. 
+
+                                    </li>
+                                    <li>
+                                        Jing
+                                        Ma（硕士生）#; Bin Yao#*; Xiaofeng Gao; Yanyan
+                                        Shen; Minyi Guo; <a
+                                            href="U1636210/yaobin/2018-TKDE-Top-k%20Critical%20Vertices%20Query%20on%20Shortest%20Path.pdf">Top-k
+                                            Critical Vertices Query on Shortest Path</a>, IEEE Transactions on Knowledge
+                                        and Data Engineering (TKDE), 2018, 30(10)：1999-2012. 
+
+                                    </li>
+                                    <li>
+                                        Yin
+                                        Lin; Xinyi Chen; Xiaofeng Gao*; Bin Yao; Guihai Chen; <a
+                                            href="U1636210/yaobin/2018-DEXA-R2-Tree%20An%20Efficient%20Indexing%20Scheme%20for%20Server-Centric%20Data%20Center%20Networks.pdf">R^2-Tree:
+                                            An Efficient Indexing Scheme for Server-Centric Data Center Networks</a>,
+                                        The
+                                        29th International Conference on Database and Expert Systems Applications
+                                        (DEXA), Regensburg, Germany, 2018-9-3至2018-9-6. 
+
+                                    </li>
+                                    <li>
+                                        Junfeng
+                                        Liu（博士生）#; Shuai Ma#*; Renjun Hu; Chunming Hu;
+                                        Jinpeng Huai; <a
+                                            href="U1636210/mashuai/2020-WSDM-Athena%20A%20ranking%20Enable%20Scholarly%20Ranking%20System.pdf">Athena:
+                                            A Ranking Enabled Scholarly Search System</a>., The 13th ACM International
+                                        Conference on Web Search and Data Mining (WSDM), Houston, Texas, USA,
+                                        2020-2-3至2020-2-7. 
+
+                                    </li>
+                                    <li>
+                                        Xinshi
+                                        Zang; Peiwen Hao; Xiaofeng Gao*; Bin Yao; Guihai Chen; <a
+                                            href="U1636210/yaobin/2018-DEXA-QDR-Tree%20An%20Efficient%20Index%20Scheme%20for%20Complex%20Spatial%20Keyword%20Query.pdf">QDR-Tree:
+                                            An Efficient Index Scheme for Complex Spatial Keyword Query</a>, The 29th
+                                        International Conference on Database and Expert Systems Applications (DEXA),
+                                        Regensburg, Germany, 2018-9-3至2018-9-6. 
+
+                                    </li>
+                                    <li>
+                                        Ying
+                                        Xu; Lisi Chen; Bin Yao*; Shuo Shang*; Shunzhi Zhu; Kai Zheng; Fang Li; <a
+                                            href="U1636210/yaobin/2017-WISE-Location-Based%20Top-k%20Term%20Querying%20over%20Sliding%20Window.pdf">Location-Based
+                                            Top-k Term Querying over Sliding Window</a>, The 18th International
+                                        Conference
+                                        on Web Information Systems Engineering (WISE), Puschino, Russia,
+                                        2017-10-7至2017-10-11. 
+
+                                    </li>
+                                    <li>
+                                        Yang
+                                        Xu（硕士生）#; Bin Yao#*; Zhi-Jie Wang; Xiaofeng
+                                        Gao; Jiong Xie; Minyi Guo; <a
+                                            href="U1636210/yaobin/2019(2020发表)-TKDE-Skia-scalable%20and%20efficient%20in%20memory%20analytics%20for%20big%20spatial%20textual%20data.pdf">Skia:
+                                            Scalable and Efficient In-Memory Analytics for Big Spatial-Textual Data</a>,
+                                        IEEE Transactions on Knowledge and Data Engineering (TKDE), 2020,
+                                        32(12)：2467-2480. 
+
+                                    </li>
+                                    <li>
+                                        Mengqi
+                                        Zeng（硕士生）#; Bin Yao#*; Zhi-Jie Wang; Yanyan
+                                        Shen; Feifei Li; Jianfeng Zhang; Hao Lin; Minyi Guo; <a
+                                            href="U1636210/yaobin/2018-JCST-CATIRI-An%20Efficient%20Method%20for%20Content-and-Text%20Based%20Image%20Retrieval.pdf">CATIRI:
+                                            An Efficient Method for Content-and-Text Based Image Retrieval</a>, Journal
+                                        of
+                                        Computer Science and Technology (JCST), 2018, 34(2)：287-304.
+                                        
+
+
+
+                                    </li>
+                                    <li>
+                                        Zhongpu
+                                        Chen（博士生）#; Bin Yao#*; Zhi-Jie Wang; Wei Zhang;
+                                        Kai Zheng; Panos Kalnis; Feilong Tang; <a
+                                            href="U1636210/yaobin/2019(2020发表)-GeoInformatica-ITISS-an%20efficient%20framework%20for%20querying%20big%20temporal%20data.pdf">ITISS:
+                                            an efficient framework for querying big temporal data</a>, GeoInformatica,
+                                        2020, 24(1)：27-59. 
+
+                                    </li>
+                                    <li>
+                                        Bin
+                                        Yao; Wei Zhang; Zhi-Jie Wang; Zhongpu Chen; Shuo Shang*; Kai Zheng*; Minyi Guo;
+                                        <a
+                                            href="U1636210/yaobin/2018-DASFAA-Distributed%20In-Memory%20Analytics%20for%20Big%20Temporal%20Data.pdf">Distributed
+                                            In-Memory Analytics for Big Temporal Data</a>, The 23rd International
+                                        Conference on Database Systems for Advanced Applications (DASFAA), Gold Coast,
+                                        Australia, 2018-5-21至2018-5-24. 
+
+                                    </li>
+                                    <li>
+                                        Lisi
+                                        Chen; Shuo Shang*; Christian S. Jensen; Jianliang Xu; Panos Kalnis; Bin Yao;
+                                        Ling Shao; <a
+                                            href="U1636210/yaobin/2020-VLDBJ-Top-k%20term%20publishsubscribe%20for%20geo-textual%20data%20streams.pdf">Top-k
+                                            term publish/subscribe for geo-textual data streams</a>., The VLDB Journal,
+                                        2020, 29(5)：1101-1128. 
+
+                                    </li>
+                                    <li>
+                                        Lisi
+                                        Chen; Shuo Shang*; Christian S. Jensen; Bin Yao; Panos Kalnis; <a
+                                            href="U1636210/yaobin/2020-ICDE-Parallel%20Semantic%20Trajectory%20Similarity%20Join.pdf">Parallel
+                                            Semantic Trajectory Similarity Join</a>, The 36th IEEE International
+                                        Conference
+                                        on Data Engineering (ICDE), Texas, USA, 2020-4-20至2020-4-24. 
+
+                                    </li>
+                                </ol>
+                                申请专利列表：
+                                <ol>
+                                    <li>
+                                        姚斌; 过敏意; 陈中普; 李超; 唐飞龙, 路网上的弹性聚合最近邻查询G-max方法, 2018-4-17, 中国, 201810342545.9.
+
+                                    </li>
+                                    <li>
+                                        姚斌; 过敏意; 陈中普; 唐飞龙; 李超, 路网上的弹性聚合最近邻查询List-sum方法, 2018-4-17, 中国, 201810365127.1.
+                                    </li>
+                                    <li>
+                                        姚斌; 高超; 徐阳; 过敏意; 陈全; 李超; 沈耀; 冷静文; 郑文立; 林昊, 应用于电子地图的空间关键字查询的近似搜索方法, 2019-4-24,
+                                        中国, 201910334422.5.
+                                    </li>
+                                    <li>
+                                        姚斌; 徐阳; 过敏意; 陈全; 李超; 沈耀; 冷静文; 郑文立; 林昊, 电子地图空间关键字查询分布式索引系统和方法, 2019-4-24, 中国,
+                                        201910333878.X.
+                                    </li>
+                                    <li>
+                                        姚斌; 阮珂; 徐阳; 过敏意; 陈全; 李超; 沈耀; 冷静文; 郑文立; 林昊, 应用于电子地图的空间关键字查询的准确搜索方法, 2019-4-24,
+                                        中国, 201910333876.0.
+                                    </li>
+                                    <li>
+                                        姚斌; 刘音沛; 徐阳; 过敏意; 陈全; 李超; 沈耀; 冷静文; 郑文立; 林昊, 应用于电子地图的空间关键字查询的搜索方法, 2019-4-24, 中国,
+                                        201910333874.1.
+                                    </li>
+                                    <li>
+                                        姚斌; 过敏意; 张伟; 唐飞龙; 陈全; 冷静文, 基于时间旅行和时态聚合查询的分布式处理框架系统, 2018-11-13, 中国,
+                                        201810494066.9.
+                                    </li>
+                                </ol>
+
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">面向公共事件的示范应用</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>针对公共事件具有影响广泛、关联复杂、突发性强、难以预见等特点，我们基于媒体内容感知和关联关系挖掘技术，研究了突发事件的预警和溯源、事件图谱的构建和维护以及示范应用原型系统开发。相关成果发表在SIGKDD、EMNLP、CIKM、ICCD、IPDPS等国际知名会议，
+                                    TKDE、TKDD、WWWJ，中文期刊《计算机研究与发展》等国内外知名期刊，共发表论文10篇，其中包括CCF A类3篇，CCF B类6篇，中文期刊1篇，并申请发明专利5项。</p>
+
+                                <ol>
+                                    <li>
+
+                                        Xiaofeng
+                                        Gao*; Zhenhao Cao; Sha Li; Bin Yao; Guihai Chen; Shaojie Tang; <a
+                                            href="U1636210/yaobin/2019-TKDD-taxonomy%20and%20evaluation%20for%20microblog%20popularity%20prediction.pdf">Taxonomy
+                                            and Evaluation for Microblog Popularity Prediction</a>, ACM Transactions on
+                                        Knowledge Discovery from Data (TKDD), 2019, 13(2)：1-40. 
+
+                                    </li>
+                                    <li>
+                                        Jingyuan
+                                        Wang; Xiaojian Wang; Junjie Wu*; <a
+                                            href="U1636210/wangjingyuan/2018-KDD-Inferring%20Metapopulation%20Propagation%20Network%20for%20Intra-city%20Epidemic%20Controland%20Prevention.pdf">Inferring
+                                            Metapopulation Propagation Network for Intra-city Epidemic Control and
+                                            Prevention</a>, The 24th ACM SIGKDD International Conference on Knowledge
+                                        Discovery &amp; Data Mining (SIGKDD), London, UK, 2018-8-19至2018-8-23. 
+
+                                    </li>
+                                    <li>
+                                        李莹莹（硕士生）#; 马帅#*; 蒋浩谊; 刘喆; 胡春明; 李雄; <a
+                                            href="U1636210/mashuai/2018-计算机研究与发展-一种基于社交事件关联的故事脉络生成方法.pdf">一种基于社交事件关联的故事脉络生成方法</a>,
+                                        计算机研究与发展, 2018, 55(9)：1972-1986. 
+
+                                    </li>
+                                    <li>
+                                        Jingyuan
+                                        Wang; Chao Chen; Junjie Wu*; Zhang Xiong; <a
+                                            href="U1636210/wangjingyuan/2017-KDD-No%20Longer%20Sleeping%20with%20a%20Bomb%20A%20Duet%20System%20for%20Protecting%20Urban%20Safety%20from%20Dangerous%20Goods.pdf">No
+                                            Longer Sleeping with a Bomb: A Duet System for Protecting Urban Safety from
+                                            Dangerous Goods</a>, The 23rd ACM SIGKDD International Conference on
+                                        Knowledge
+                                        Discovery and Data Mining (SIGKDD), Halifax, Canada, 2017-8-13至2017-8-17. 
+
+
+                                    </li>
+                                    <li>
+                                        Shuai
+                                        Ma*; Gang Wang; Yansong Feng; Jinpeng Huai; <a
+                                            href="U1636210/mashuai/2019-EMNLP-Easy%20First%20Relation%20Extraction%20with%20Information%20Redundancy.pdf">Easy
+                                            First Relation Extraction with Information Redundancy</a>, The 2019
+                                        Conference
+                                        on Empirical Methods in Natural Language Processing and the 9th International
+                                        Joint Conference on Natural Language Processing (EMNLP-IJCNLP), Hong Kong,
+                                        China, 2019-11-3至2019-11-7. 
+
+                                    </li>
+                                    <li>
+                                        Jia
+                                        Li（博士生）#; Yang Cao; Shuai Ma#; <a
+                                            href="U1636210/mashuai/2017-CIKM-Relaxing%20Graph%20Pattern%20Matching%20With%20Explanations.pdf">Relaxing
+                                            Graph Pattern Matching With Explanations</a>, The 26th ACM International
+                                        Conference on Information and Knowledge Management (CIKM), Singapore,
+                                        2017-11-06至2017-11-10. 
+
+                                    </li>
+                                    <li>
+                                        Hao
+                                        Lin（博士生）#; Yuan Zuo*; Guannan Liu; Hong Li;
+                                        Junjie Wu#; Zhiang Wu; <a
+                                            href="U1636210/wujunjie/2020-World%20Wide%20Web-A%20Pseudo-document-based%20Topical%20N-grams%20Model%20for%20Short%20Texts.pdf">A
+                                            Pseudo-document-based Topical N-grams Model for Short Texts</a>, World Wide
+                                        Web-Internet and Web Information Systems, 2020, 23(6)：3001-3023.
+                                        
+
+                                    </li>
+                                    <li>
+                                        Yong
+                                        Chen; Junjie Wu*; Jianying Lin; Rui Liu; Hui Zhang; Zhiwen Ye; <a
+                                            href="U1636210/wujunjie/2020-TKDE-Affinity%20Regularized%20Non-negative%20Matrix%20Factorization%20for%20Lifelong%20Topic%20Modeling.pdf">Affinity
+                                            Regularized Non-negative Matrix Factorization for Lifelong Topic
+                                            Modeling</a>,
+                                        IEEE Transactions on Knowledge and Data Engineering (TKDE), 2020,
+                                        32(7)：1249-1262. 
+
+
+                                    </li>
+                                    <li>
+                                        Fan
+                                        Yang（硕士生）#; Junbin Kang; Shuai Ma#*; Jinpeng
+                                        Huai; <a
+                                            href="U1636210/mashuai/2018-ICCD-A%20Highly%20Non-Volatile%20Memory%20Scalable%20and%20Efficient%20File%20System%20.pdf">A
+                                            Highly Non-Volatile Memory Scalable and Efficient File System</a>, The 37th
+                                        IEEE International Conference on Computer Design (ICCD), Orlando, Florida USA,
+                                        2018-10-7至2018-10-10. 
+
+                                    </li>
+                                    <li>
+                                        Wenli
+                                        Zheng; Xiaorui Wang; Yue Ma; Chao Li; Hao Lin; Bin Yao; Jianfeng Zhang; Minyi
+                                        Guo; <a
+                                            href="U1636210/yaobin/2019-IPDPS-sprintcon%20controllable%20and%20efficient%20computational%20sprinting%20for%20data%20center%20serverse.pdf">SprintCon:Controllable
+                                            and Efficient Computational Sprinting for Data Center Servers</a>, The 33rd
+                                        IEEE International Parallel &amp; Distributed Processing Symposium (IPDPS), Rio
+                                        de Janeiro, Brazil, 2019-5-20至2019-5-24. 
+                                    </li>
+                                </ol>
+                                申请专利列表：
+                                <ol>
+                                    <li>
+                                        马帅; 李莹莹; 蒋浩谊; 刘喆, 社交网络中基于事件关联的故事脉络生成方法, 2018-1-24, 中国, 201810067320.7.
+                                    </li>
+                                    <li>
+                                        马帅; 蒋浩谊; 华轶名, 一种基于辅助信息的中文抽取性集成无监督摘要的方法, 2020-3-24, 中国, 202010211550.3.
+                                    </li>
+                                    <li>
+                                        刘春阳; 王卿; 王萌; 赵志云; 张旭; 苗琳; 吴俊杰; 袁石, 一种基于热点事件的舆情知识图谱构建方法, 2017-9-14, 中国,
+                                        201710827984.4.
+                                    </li>
+                                    <li>
+                                        马帅; 杨帆; 康俊彬; 怀进鹏, 一个基于NVM的高性能、可扩展的轻量级文件系统, 2017-11-16, 中国, 201711133827.X.
+                                    </li>
+                                    <li>
+                                        林学练; 蒋金凯; 宋景和; 马帅, 一种时态图数据库分布式事务解决系统, 2020-10-21, 中国, 202011130789.4.
+                                    </li>
+                                </ol>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="dataset">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">时态图数据集</h3>
+                            </div>
+                            <div class="panel-body">
+                                <h4>1. RE-Europe: 用于建模可再生能源的欧洲电力系统的数据集</h4>
+
+                                <p>近年来，可再生能源（风能和太阳能）发电依靠其清洁、无污染、低成本的特点备受青睐。受复杂的天气和气候动态影响，这些能源具有高度可变和可预测性有限的特点，为电力系统和电力市场的运作带来了重大挑战。为了能够对未来的能源系统进行建模，该数据集通过可再生能源电力系统（风能和太阳能）与复杂的天气和气候动态相结合，描述了一个可再生能源电力系统的专用大规模数据集。
+                                </p>
+
+                                数据集大小为5.69GB，由三个静态组件（传输网络，发电机数据库和每个节点安装可再生能源的最大发电能力）和三个动态组件（用于生产生活的电力需求，可再生能源的实际发电能力和可再生能源的发电能力预测）组成。其中，传输网络模型的构建以欧洲电力系统输电网络为原型，该模型由1514个节点，2156条边构成；发电机数据库列出了每个发电机的地理坐标、发电能力和燃料类型；在传输网络的每个节点上，对已安装可再生能源发电设备进行标记，并记录最大发电能力。对于动态组件，整个可再生能源系统的时间跨度为3年，每隔1小时采集一次数据，并记录实时的电力需求，风能和太阳能的实际发电电量和通过天气预测得到的风能和太阳能发电电量预测。
+                                </p>
+
+                                该数据集可以用于网络行为协调、可再生发电预测等方面。详情请参考</p>
+                                <p class="well well-sm">Jensen, T., Pinson, P. <a
+                                        href="https://doi.org/10.1038/sdata.2017.175">RE-Europe, a large-scale dataset
+                                        for modeling a highly renewable European electricity system</a>. Sci Data, 2017.
+                                </p>
+
+                                <h4>2. 生成数据集（来自工作：时态稠密子图查询）</h4>
+
+                                <p>该数据集模拟了图中正权重边随时间沿着拓扑结构扩散的现象。生成的时态图仅在边上有一个时态属性（权重）。权重有正负两种，可以是浮点数或者二值（-1和1）型。生成器可以指定的参数包括：点、边数量、snapshot数、边权重类型、正权重的扩散速率、正权重初始比例。详见：<a
+                                    href="https://github.com/hurenjun/TDSubgraph">https://github.com/hurenjun/TDSubgraph</a> 参考资料：
+                                </p>
+
+                                <p class="well well-sm">
+                                    Petko Bogdanov, Misael Mongiovi, Ambuj K. Singh. Mining Heavy Subgraphs in Time-Evolving Networks. ICDM. 2011.
+                                </p>
+
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">轨迹数据集</h3>
+                            </div>
+                            <div class="panel-body">
+                                <h4>1. 出租车轨迹数据（Taxi）</h4>
+                                <p>包含了北京市100辆出租车的GPS轨迹，时间范围：2010年11月1日至30日，采样率为1分钟，平均每辆车的轨迹含有39100个数据点。
+                                    详见：<a
+                                        href="http://mashuai.buaa.edu.cn/traj.html">http://mashuai.buaa.edu.cn/traj.html</a>
+                                </p>
+                                <h4>2. 卡车轨迹数据（Truck）</h4>
+                                <p>包含了中国某地区100辆卡车的GPS轨迹，时间范围：2015年8月至10月，采样率为1~60秒，大部分车的轨迹含有50k~90k个数据点。
+                                    详见：<a
+                                        href="http://mashuai.buaa.edu.cn/traj.html">http://mashuai.buaa.edu.cn/traj.html</a>
+                                </p>
+
+                                <h4>3. GeoLife trajectory data</h4>
+                                <p>由GeoLife项目收集的182名用户的GPS轨迹，时间范围：2007年4月至2011年10月，采样率是动态变化的，约91%的时间间隔为1~5秒或5~20米一个点，最长的轨迹含有2156994个数据点。
+                                    详见：<a
+                                        href="https://www.microsoft.com/en-us/download/details.aspx?id=52367">https://www.microsoft.com/en-us/download/details.aspx?id=52367</a>
+                                </p>
+
+                                <!-- <b>Data Format:</b>
+                                每辆车的轨迹保存为一个单独的文本文件，每个数据点是一行，格式如：
+                                <code>id;timestamp;latitude;longitude;speed;direction</code>. <br>
+                                其中
+                                <ul>
+                                    <li><code>id</code>, long类型，车的id</li>
+                                    <li><code>timestamp</code>, long类型，采样的时间戳</li>
+                                    <li><code>latitude</code>, double类型，纬度</li>
+                                    <li><code>longitude</code>, double类型，经度</li>
+                                    <li><code>speed</code>, double类型，车的速度 (km/h)</li>
+                                    <li><code>direction</code>, double类型，车的速度矢量与正北方向的夹角</li>
+                                </ul> -->
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">学术论文重要性评估数据</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>四个数据文件，一行表示两篇文章（包括了文章的title和年份）的重要性顺序。一行中前面一篇文章的重要度比后面一篇要高（基于历史和未来的引用数）。详见：
+                                    <a
+                                        href="http://mashuai.buaa.edu.cn/sourcecodes/benchmark.rar">http://mashuai.buaa.edu.cn/sourcecodes/benchmark.rar</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">关系抽取数据</h3>
+                            </div>
+                            <div class="panel-body">
+                                <h4>1. 数据集一</h4>
+                                <p>含有两个数据集，<code>DB_me</code>和<code>DB_nn</code>，将DBpedia中的三元组映射到《纽约时报》语料。
+                                    <!-- The two datasets, DB_me and DB_nn,
+                                    stem from DBpedia (Bizer et al., 2009), mapping
+                                    the triples in DBpedia to sentences in the New
+                                    York Time corpus. We map 51 different relations to the dataset. -->
+                                    详见：<a
+                                    href="http://mashuai.buaa.edu.cn/sourcecodes/eFIRE.zip">http://mashuai.buaa.edu.cn/sourcecodes/eFIRE.zip</a>
+                                        参考：
+                                </p>
+                                <p class="well well-sm">
+                                    Shuai Ma*, Gang Wang, Yansong Feng, and Jinpeng Huai. Easy First Relation Extraction with Information Redundancy. EMNLP 2019.
+                                </p>
+                                <h4>2. 数据集二</h4>
+                                <p>含有5个数据文件：①四个数据文件，每行（json格式）包括一段长文本，和其中提取到的Subject-Relation-Object关系列表；②标注的SRO列表，每行一条。详见：
+                                    <a
+                                        href="http://mashuai.buaa.edu.cn/sourcecodes/RE-data.rar">http://mashuai.buaa.edu.cn/sourcecodes/RE-data.rar</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">电商场景数据</h3>
+                            </div>
+                            <div class="panel-body">
+                                我们构造了四类具有不同特点的商品数据：
+                                <dl>
+                                    <dt>Baby&Toy</dt>
+                                    <dd>本数据集中的商品主要面向孕妇、产妇、婴幼儿</dd>
+
+                                    <dt>Electronics</dt>
+                                    <dd>本数据集中的商品包括数码产品、电脑外设等</dd>
+
+                                    <dt>Fashion</dt>
+                                    <dd>各种衣服，如衬衫、衬衫、短裤、裤子、裙子、连衣裙、帽子等</dd>
+
+                                    <dt>Food&Drink</dt>
+                                    <dd>有关食品和饮料的商品，如绿茶、葡萄酒、咖啡、牛肉、蛋糕、面包、水果等。</dd>
+                                </dl>
+                                每个数据的文件夹结构是相同的，包括：
+                                <dl>
+                                    <dt>scene-cate_set.txt</dt>
+                                    <dd>Scene mining的ground truth。每行是一个scene并且其中有多个类别。</dd>
+
+                                    <dt>cate_cate_pair.txt</dt>
+                                    <dd>类别之间的相关性，每行有三个元素：类别1、类别2、相关性分数</dd>
+
+                                    <dt>item_brand_pair.txt</dt>
+                                    <dd>商品与品牌之间的相关性。每行有三个元素：一个商品、一个品牌、一个布尔值（表示前者的品牌是否为后者）</dd>
+
+                                    <dt>item_cate_pair.txt</dt>
+                                    <dd>商品与类别之间的相关性。每行有三个元素：一个商品，一个类别，一个布尔值表示该商品是否属于该类</dd>
+
+                                    <dt>view_item_item_pair.txt</dt>
+                                    <dd>在view sessions中共同出现的商品。每行有三个元素：商品1，商品2，基于频率的归一化得分</dd>
+
+                                    <dt>purchase_item_item_pair.txt</dt>
+                                    <dd>在订单中共同出现的商品。每行有三个元素：商品1，商品2，基于频率的归一化得分</dd>
+                                </dl>
+
+                                <p>详见：<a
+                                        href="https://github.com/e09b47e1/Scene_Mining_Data">https://github.com/e09b47e1/Scene_Mining_Data</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="modal-footer" style="width: 100%; overflow: hidden;">
+                    <div class="container">
+                        <div class="row" style="text-align: center;">
+                            <small>《社会媒体大数据感知与分析关键技术》 NSFC-通用技术联合基金重点支持项目（项目批准号U1636210，执行期限：2017.1 ~ 2020.12）
+                                Copyright © All Rights Reserved.</small>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
