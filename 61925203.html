@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>大数据近似计算</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <script>
+      $(document).ready(function() {
+        var hash = window.location.hash;
+        if (hash){
+          $('html, body').animate({scrollTop:0});
+          $('a[data-toggle="tab"][href="'+ hash + '"]').tab('show');
+        }
+
+        $(document.body).on('click','a[data-toggle="tab"]', function (e) {
+            location.hash = this.getAttribute("href");
+        });
+      });
+
+      $(window).on("popstate", function() {
+        var anchor = location.hash || $('a[data-toggle="tab"]').first().attr("href");
+        $('html, body').animate({scrollTop:0},1000);
+        $('a[href="' + anchor + '"]').tab('show');
+        
+      });
+    </script>
+
+    <div class="container"  style="text-align:justify;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>大数据近似计算 <small>(项目批准号61925203)</small><img
+                            src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAAoADwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD2aiio5poraF555FjijUs7scBQOpJoAJ54raB555FjijUs7scBQOpJrxzxT8Ub+61iP+w5jBZ2r5Ukf8fB9WH932/HrjB8TPFWo6hOmnpG1rpzDeqswEk/ozLnKj0BA9fp59Xo4fDq3NIhs+h/CPi+y8V6f5kWIruMDz7cnlT6j1HvXQ18x6Xqd5o+oxX1hMYZ4zww6H2PqK+gPDniSHW7ZEl8uK+ESySQq2QVPR19VP8AnsThXoezd1sNO5uUUUVylEc00VvC800ixxxqWd2OAoHUk14l498fS+Ip2sNPdo9Mjbr0M5Hc+3oPxPt0/j618Z+I5m0/T9Jlj0yNuT50YM5Hc/N09B+J9uJHw28XEgf2Ow9/Pj/+Kruw8Kcfek1chtixabP46uJbqxKLqqx77qGRtqygYHmKegJ4yD3ORxwNz4f+DPD/AIj0S6lvZmkvtzII0k2mEY4bA6/jxVk/CW5We2iguZIkSIm7udwPmsf4Y0HYdMsRnNMvvDniu2s30zw5oD6fZOMSzG5iNxcf77BuB/sjitJVFJcsJW/QLHKyWuneGiftTQ6lqi9LdTugtz/tn+Nv9kcepPSs2HXNSt9YGrx3cgvQ+7zc8n2x0xjjHTHFbP8Awrbxf/0B2/7/AMX/AMVR/wAK38Xf9Adv+/8AH/8AFVup0+skxanrHgvxraeK7La22HUIl/fQZ6/7S+o/l/PqK8GsfAvjjTb2K8s9NkhnibcjrPHkf+PV7Fouo6rPpkbavpMlreD5ZFRkZW/2hhuh9K86tTjF3g9C0zXrh/GGpa/Y+IYTpPmSQRWEk00CjhxuwSP9oA5H0oorKm7PYGaun3V/J8PY7p5phfNYFjL5e9w+3rt7nPaqHw/1HULwX8V9NPcrF5ZSd3LRsSpyF3KGB9Qc49qKKvTllp1ANGGtXvjPU5Jbmf7Ba3RRUM5VcbOAE2ncM99wpfGV9dW2rWUUt9e2GmNBIzT2aZZph91ScHt270UU4u9RaB0Om0uR5dLtZJGlZmiUlpkCOeOrKOh9qt0UVgxn/9k=" />
+                    </h1>
+                </div>
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">首页</a>
+                    </li>
+                    <li role="presentation"><a href="#status" aria-controls="status" role="tab"
+                            data-toggle="tab">执行情况</a></li>
+                    <li role="presentation"><a href="#content" aria-controls="content" role="tab"
+                            data-toggle="tab">研究内容</a></li>
+                    <li role="presentation"><a href="#output" aria-controls="output" role="tab" data-toggle="tab">论文 &
+                            专利</a>
+                    </li>
+                    <li role="presentation"><a href="#communication" aria-controls="communication" role="tab" data-toggle="tab">学术合作交流</a>
+                    </li>
+                    <li role="presentation"><a href="#application" aria-controls="application" role="tab" data-toggle="tab">成果转化</a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">项目概述</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p><code>青年科学基金项目（A类）[原国家杰出青年科学基金项目]（执行期限：2020.01 ~ 2024.12）</code></p>
+                                <p>
+                                    大数据规模巨大、动态变化、可靠性低，有限计算资源无法有效处理大规模数据，如何从大数据中快速准确地搜索有价值的信息已成为一个重要挑战性问题。大数据计算任务在最优解不存在、难以计算或者不必要时，追求可以高效计算且满足实际需求的近似结果是一种有效的途径，因此如何设计高效大数据近似计算方法成为解决问题的关键。针对上述问题，本项目从任务感知的近似计算理论和方法、数据感知的近似计算理论和方法、基于新型存储的计算理论和方法、深度学习与传统算法的深度融合方法等方面开展了深入研究，取得了重要开创性成果，引领形成了大数据近似计算的新方向和新热点。
+                                </p>
+
+                                <p><small>
+                                        The massive scale, dynamic nature, and low reliability of big data, facing with the limited computational resources, make it challenging to process large-scale data effectively. Hence, computing valuable information efficiently and accurately from big data has become a critical issue. However, optimal solutions are usually non-existent, computationally infeasible, or unnecessary in big data computation tasks. Computationally efficient approximate solutions that meet practical requirements provide an effective way for such scenarios. Therefore, designing efficient approximation methods for big data is key to address these challenges. This project has been conducted thorough research across multiple dimensions, including task-aware approximation theories and methods, data-aware approximation theories and methods, computation theories and methods based on novel storage architectures, combination deep learning with classical algorithms. The groundbreaking achievements have pioneered the new research direction of big data approximation computing.
+                                    </small></p>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">依托单位</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h4 class="media-heading">北京航空航天大学</h4>
+                                        <div class="media-left">
+                                        项目依托单位北京航空航天大学计算机学院拥有2个国家重点实验室，１个国家工程实验室，1个国家工程技术中心，１个国家级国际科技合作基地、6个省部级重点实验室、1个高精尖创新中心等高水平研究基地，是计算机科学与技术、软件工程两个“双一流”一级学科国家重点学科单位；近年来承担了国家973计划、自然科学基金创新群体、自然科学重点基金、863高技术计划重点课题、国防预研和国际合作等国家级研究项目，获得国家自然科学二等奖1项，国家科技进步一等奖2项，国家科技进步二等奖10项，国家科技发明二等奖6项，国家科技进步三等奖1项，省部级奖92项，高水平学术论文的数量和质量逐年稳步上升，2013年北航计算机科学学科成功进入ESI前1%，2018年9月ESI排名第90名。
+                                        </div>
+                                        <div class="media-right">
+                                        <img style="width:70px" src="61925203/buaa-logo.png" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div role="tabpanel" class="tab-pane" id="status">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">项目执行情况</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>
+                                    根据国家自然科学基金委国家杰出青年科学基金项目“大数据近似计算”（编号 61925203）的计划任务书，本项目按照既定研究思路，遵循研究计划，从基于任务感知的近似计算、基于数据感知的近似计算、基于新型存储的计算和深度学习与传统算法融合四个方面开展了深入研究，并推广相关成果的应用，现对该项目每年的计划执行情况进行介绍：
+                                </p>
+                                <ol>
+                                    <li>2020年1月至2020年12月，主要开展了基于任务感知的近似计算理论和方法等方面的工作，深入研究了任务感知的近似计算理论及模型，设计了面向任务感知的高效算法；此外还对大数据环境下建立数据感知计算理论和方法开展了初步的研究。
+                                    </li>
+                                    <li>2021年1月至2021年12月，主要开展了基于任务感知和基于数据感知的近似计算理论和方法等方面的工作，进一步完善了任务感知的近似计算理论及模型，改进了面向任务感知的算法；深入研究了数据感知的近似计算理论和模型，设计了面向数据感知的高效算法；此外还对大数据环境下建立基于新型存储的计算方法开展了初步的研究。
+                                    </li>
+                                    <li>2022年1月至2022年12月，主要开展了基于任务感知、基于数据感知和基于新型存储的计算理论和方法等方面的工作，进一步完善了任务感知和数据感知的近似计算理论及模型，改进了面向任务感知和面向数据感知的算法；初步研究了基于新型存储的计算理论和方法。期间，项目成员逐渐意识到，上个世纪70年代以来的经典算法和上个世纪40年代以来的深度学习是相对独立的两个研究领域，两者缺少交集，且深度学习本质上也是一种近似计算方法，这是一个很好的研究机会，因此在项目中期之后，将重心由基于新型存储的计算理论和方法研究调整为更契合大数据近似计算的深度学习与传统算法融合的方法研究。
+                                    </li>
+                                    <li>2023年1月至2023年12月，主要开展了基于任务感知、基于数据感知和深度学习与传统算法融合的计算方法以及面向国家社会需求的系统和应用技术等方面的工作，进一步改进了面向任务感知和面向数据感知的算法，并基于深度学习与传统算法融合的设计理念，提出传统算法辅助深度学习、深度学习辅助传统算法和深度学习与传统算法深度融合的大数据近似方法，推广了相关成果的应用。
+                                    </li>
+                                    <li>2024年1月至2024年12月，整合前期的工作，主要开展了面向国家社会需求的系统和应用技术方面的工作，进一步推广了相关成果的应用，并针对反馈结果，完善提出的各类技术和方法；汇总研究成果，准备项目结题。
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">研究目标完成情况</h3>
+                            </div>
+                            <table class="table table-bordered table-hover">
+                                <tr>
+                                    <th><b>预期成果</b></th>
+                                    <th> <b>项目指标</b> </th>
+                                    <th> <b>完成情况</b> </th>
+                                </tr>
+                                <tr>
+                                    <td><b>学术论文</b></td>
+                                    <td> 30篇以上高水平论文 </td>
+                                    <td> 发表论文45篇(CCF-A类28篇，CCF-B类14篇，邀请论文3篇) </td>
+                                </tr>
+                                <tr>
+                                    <td><b>知识产权</b></td>
+                                    <td> 5项以上发明专利 </td>
+                                    <td> 申请发明专利16项，其中授权8项 </td>
+                                </tr>
+                                <tr>
+                                    <td><b>人才培养</b></td>
+                                    <td> 培养博士生、硕士生 10名 </td>
+                                    <td> 
+                                        1人获国家级人才，2人被聘为副教授；
+                                        已毕业博士生7人，硕士生19人(优秀毕业生4人)；
+                                        译著、编著教材各1部
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>转化应用</b></td>
+                                    <td>面向国家社会需求，推广相关应用</td>
+                                    <td>在国防安全、国民经济和智能制造等领域示范应用</td>
+                                </tr>
+                                <tr>
+                                    <td><b>调整情况</b></td>
+                                    <td colspan="2">在项目中期之后，将重心由基于新型存储的计算理论和方法研究调整为更契合大数据近似计算的深度学习与传统算法融合的方法研究</td>
+                                </tr>
+                            </table>
+                            <div class="panel-body">
+                                <h4>项目指标</h4>
+                                <p>本项目研究计划书中所制定的预期成果如下：在重要国际学术会议和期刊上发表30篇以上高水平学术论文，申请5项以上国内外发明专利，培养博士生、硕士生10名。在该方向取得原创性的研究成果，争取国际领先的学术地位。
+                                </p>
+
+                                <h4>完成情况</h4>
+                                <p>在项目执行期间，按照既定研究计划开展科研工作，超额完成项目所有预期指标。（1）在学术论文方面，在重要国际学术会议和期刊上发表45篇高水平学术论文（其中包括CCF-A类28篇，CCF-B类14篇，邀请论文3篇）。（2）在知识产权方面，申请了16项国家发明专利，其中授权8项。（3）在人才培养方面，团队成员1人入选国家级高层次青年人才并被聘为教授，1人入选“兴滇英才支持计划”青年人才，2人被聘为副教授，培养博士生18人，硕士生31人，其中已毕业博士生7人，已毕业硕士生19人，4人为优秀毕业生。出版译著教材《离散数学-面向计算机专业》（排名1/4），出版编著教材《离散数学及其应用-Python建模与实现》（排名3/6）。（4）部分提出的大数据近似计算相关技术应用于国防安全、国民经济和智能制造等领域。
+                                </p>
+
+                                <h4>调整情况</h4>
+                                <p>近年来广受关注的深度学习本质上也是一种近似计算方法，但是从上个世纪70年代以来的经典算法和从上个世纪40年代以来的深度学习是相对独立的两个研究领域，两者缺少交集。我们意识到这是一个很好的研究机会，因此在项目中期后，将重心由基于新型存储的计算理论和方法研究调整为更契合大数据近似计算的深度学习与传统算法融合的方法研究。
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="content">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">主要研究内容</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>本项目开展面向大数据的近似计算理论与方法的研究，包括任务感知的近似计算理论和方法、数据感知的近似计算理论和方法、基于新型存储的计算理论和方法、深度学习与传统算法的深度融合方法以及面向国家社会需求的系统和应用。主要的研究内容及其关系如下图所示：
+                                </p>
+                                <p class="text-center"><img style="max-width: 700px;"
+                                        src="61925203/content.png"></p>
+                                <h4>1. 任务感知的近似计算理论和方法</h4>
+                                <p>任务感知的近似计算理论与方法充分考虑利用任务本身的特征，将任务特征与算法设计结合。是通过深度挖掘实例与任务关联，设计满足任务要求的一类大数据近似计算方法。与传统的算法设计相比，不再纯粹追求理论结果与复杂度，而是挖掘发现与计算紧密相关的具体任务特征，强调满足实际需要，达到大数据分析处理问题上的应用效果。</p>
+                                <p>任务感知计算具有十分重要的意义和巨大的实际应用价值。一方面，单纯追求理论上的完备或者较低的复杂度未必能开展真正的应用，从而失去在实际中应用的价值。另一方面，算法设计时充分利用任务特征不仅可以提升效率，同时还能提升算法的查询准确性。为了实现任务感知计算的构想，首先要深度挖掘发现任务特征，建立任务感知的计算理论及模型，并重点研究相关的查询近似算法和数据近似算法，主要包括：研究大数据环境下任务特征的发现与挖掘、任务特征的表示与建模，建立任务感知的近似计算理论及模型；研究面向任务感知的高效算法的设计，包括任务感知的查询近似算法和数据近似算法的设计与评价标准；推广这些技术在大数据中的实际应用。</p>
+                                <p>在基于任务感知的概念近似方面，项目提出了多项式可解的时态图模体、弹性聚合最近邻查询及面向电子商务的无监督场景挖掘等概念及计算方法。在基于任务感知的规则发现方面，项目提出了近似字典次序依赖发现、近似拒绝约束发现及近似包含依赖发现等方法。在基于任务感知的文本图像分析方面，项目提出了机器翻译注意力交互学习、高分辨率全景图生成、大语言模型推理增强及基于知识增强的情感分析等方法，并系统地分析了各类基于大模型的自然语言生成质量评估方法。在基于任务感知的近似计算分析方面，项目系统地分析了各类误差有界轨迹数据压缩方法，并围绕《Science》中De Montjoye和Sánchez D等人关于匿名化机制个体身份再识别方面的争论，首次对现有匿名轨迹方法的个体隐私性和实际可用性进行了系统性的评估和分析，回答了由此争论引出的两个关键问题。</p>
+                                <h4>2. 数据感知的近似计算理论和方法</h4>
+                                <p>除问题本身特性外，数据、实例是影响问题难易程度的另一重要因素。在算法设计过程中结合数据特性，针对不同类型问题实例开发相应算法，可能获得更优的计算效果。考虑到大数据信息可用性普遍偏低，将数据特征与算法设计结合的数据感知算法是提高大数据算法可靠性的一个潜在选择。</p>
+                                <p>为实现数据感知计算，需深度挖掘发现数据特征，建立数据感知计算理念和模型，并重点研究扩展数据感知的近似算法理论及应用，主要包括：研究大数据环境下数据特征和基于压缩感知等的变换域特征的发现与挖掘，建立数据感知计算理论，构建与数据量、数据统计相关的算法有效性度量标准；研究数据感知的近似计算理论和模型；研究数据感知算法的设计方法，扩展数据感知的查询近似以及数据感知的数据近似，并研究面向大数据计算的应用。</p>
+                                <p>在基于数据感知的时空分析方面，项目提出了时态凸块搜索、上下文融合的原始定位数据标注、基于时空行为的用户决策画像、多维度联合学习的定位点标注及学者姓名协同消歧等方法。在基于数据感知的规则发现方面，项目提出了拒绝约束冲突多样化修复、字典序依赖发现、引导式条件函数依赖发现、差分依赖发现、逐层次序依赖发现、逐点次序依赖发现、动态函数依赖发现及增量拒绝约束发现等方法。在基于数据感知的多模分析方面，项目提出了基于轨迹的图像描述生成、基于文本和轨迹约束的图像生成、视觉-语言模型注视对齐等方法。</p>
+                                <h4>3. 基于新型存储的计算理论和方法</h4>
+                                <p>近年来国际存储器巨头对新型存储器体现出了巨大的热情，纷纷加大研发投入。新型非易失存储器件得到相当的发展，并逐步走向成熟。如基于在多个重要技术节点上取得的突破和技术的全面性，英特尔和美光于2015年率先量产容量为128Gb的相变存储器3DXPoint。这些新型存储器件有助于缓解计算和存储的瓶颈，尤其是在其作为存储的主要功能之外，也可以用来进行计算。但是如何利用这些新型存储器件进行高效计算，这些新型存储器件能够支持什么样的算法处于研究的起始阶段，大部分研究工作将其作为高效的存储。</p>
+                                <p>基于现有3DXPoint的结构或者对其结构做适量改动，从计算的角度研究新型非易失存储器件的表达能力，从而从理论上搞清楚新型非易失存储器件解决计算问题的能力。其次，研究分析传统计算问题的算法如何转换为在新型非易失存储器件计算的设计方法及其普适性，并进一步分析基于新型非易失存储器件的算法在解决现实问题上的实用性。</p>
+                                <p>在芯片工艺映射方面，项目提出了基于时延预测的芯片工艺映射方法和基于时延优化的迭代芯片工艺映射方法。在新型存储材料矩阵运算计算方面，项目提出了基于ReRAM Crossbar的整数矩阵乘法加速器架构。</p>
+                                <h4>4. 深度学习与传统算法的融合方法</h4>
+                                <p>近年来广受关注的深度学习本质上也是一种近似计算方法，但是从上个世纪70年代以来的经典算法和从上个世纪40年代以来深度学习是相对独立的两个研究领域，缺少交集。近年一些研究者提出将深度学习与传统方法相结合，依据结合的角度不同，深度学习与传统算法的融合方法可以分为传统算法辅助深度学习的方法、深度学习辅助传统算法的方法和传统算法与深度学习深度融合的方法。</p>
+                                <p>在传统算法辅助深度学习方面，项目提出了基于词图的无监督双语词典推断、基于检索和重写的无监督翻译模型初始化、基于核方法的深度网络嵌入、基于对比学习的去噪感知半监督异常检测及基于深度强化学习的许可区块链自动调优等方法。在深度学习辅助传统算法方面，项目提出了基于自编码器与度量学习辅助谱聚类的聚类簇数量估计、基于图神经网络辅助A*搜索的近似图编辑距离计算及基于图神经网络辅助协同过滤的个性化推荐等方法。在传统算法与深度学习深度融合方面，项目提出了K近邻和自编码器深度融合的无监督异常检测方法。</p>
+                                <h4>5. 面向国家社会需求的系统和应用</h4>
+                                <p>将实现任务感知及数据感知的新型算法并推广到实际应用中。面向国家社会需求，推广到相关应用中，检验并改善所提出的理论与方法，并且结合控制系统的反馈理念，形成闭环，追踪用户对这些应用的反馈信息以不断改进和完善相关理论和方法。</p>
+                                <p>项目结合了任务感知和数据感知的计算理论和方法以及深度学习与传统算法的融合方法等研究成果，在国防安全、国民经济和智能制造等领域推广应用。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="output">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">任务感知的近似计算理论和方法</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>任务感知的近似计算理论与方法是强调通过深度挖掘实例与任务关联，充分考虑利用任务本身的特征，旨在设计提出理论与实践结合，满足任务要求的一类大数据近似计算方法。针对任务计算复杂度高、规则发现困难、文本图像语义复杂和近似计算缺乏系统分析等特点，开展了基于任务感知的概念近似、规则发现、文本图像分析和近似计算分析等研究。相关成果发表在VLDB、ICDE、ACL和AAAI等国际顶级会议，以及TKDE和TODS等国际顶级期刊，共发表论文14篇，其中包括CCF-A类9篇，CCF-B类4篇，申请国家发明专利3项，其中已授权2项。</p>
+
+                                论文列表：
+                                <ol>
+                                    <li>
+                                        Hanqing Chen, Shuai Ma, Junfeng Liu, Lizhen Cui.  <a
+                                            href="61925203/paper/2025/tkde2025.pdf">Discovery of Temporal Network Motifs</a>. TKDE, Early Access, 2025.
+                                    </li>
+                                    <li>
+                                        Zhongpu Chen, Bin Yao, Zhijie Wang, Xiaofeng Gao, Shuo Shang, Shuai Ma, Minyi Guo. 
+                                            <a href="61925203/paper/2021/tkde2021.pdf">Flexible Aggregate Nearest Neighbor Queries and its Keyword-Aware Variant on Road Networks</a>. TKDE, 33(12): 3701-3715, 2021.
+                                    </li>
+                                    <li>
+                                        Gang Wang, Xiang Li, Ziyi Guo, Dawei Yin, Shuai Ma.  <a
+                                            href="61925203/paper/2024/jcst2024-smec.pdf">SMEC: Scene Mining for E-Commerce</a>. JCST, 39(2): 192-210, 2024.
+                                    </li>
+                                    <li>
+                                        Yifeng Jin, Zijing Tan , Jixuan Chen, Shuai Ma. <a
+                                            href="61925203/paper/2023/tkde2023-discovery.pdf">Discovery of Approximate Lexicographical Order Dependencies</a>. TKDE, 35(4): 3684-3698, 2023.
+                                    </li>
+                                    <li>
+                                        Renjie Xiao, Zijing Tan, Haojin Wang, Shuai Ma.  <a
+                                            href="61925203/paper/2022/vldb2022.pdf">Fast Approximate Denial Constraint Discovery</a>. In VLDB, 2022.
+                                    </li>
+                                    <li>
+                                        Qingdong Su, Zhikang Wang, Zijing Tan, Shuai Ma. <a
+                                            href="61925203/paper/2025/vldb2025.pdf">Discovering Approximate Inclusion Dependencies</a>. In VLDB, 2025.
+                                    </li>
+                                    <li>
+                                        Shuo Ren, Long Zhou, Shujie Liu, Furu Wei,Ming Zhou, Shuai Ma.  <a href="61925203/paper/2021/acl2021-semface.pdf">SemFace: Pre-training Encoder and Decoder with a Semantic Interface for Neural Machine Translation</a>. In ACL/IJCNLP, 2021.
+                                    </li>
+                                    <li>
+                                        Kun Yan, Lei Ji, Chenfei Wu, Jian Liang, Ming Zhou, Nan Duan, Shuai Ma. <a
+                                            href="61925203/paper/2024/aaai2024.pdf">HORIZON: High-Resolution Semantically Controlled Panorama Synthesis</a>. In AAAI, 2024.
+                                    </li>
+                                    <li>
+                                        Xiaohan Xu, Chongyang Tao, Tao Shen, Can Xu, Hongbo Xu, Guodong Long, Jian-Guang Lou, Shuai Ma.  <a
+                                            href="61925203/paper/2024/emnlp2024-re-reading.pdf">Re-Reading Improves Reasoning in Large Language Models</a>. In EMNLP, 2024.
+                                    </li>
+                                    <li>
+                                        Qinghua Zhao, Shuai Ma, Shuo Ren. <a href="61925203/paper/2022/aacl2022.pdf">KESA: A Knowledge Enhanced Approach to Sentiment Analysis</a>. In AACL-IJCNLP, 2022.
+                                    </li>
+                                    <li>
+                                        Zhen Li, Xiaohan Xu, Tao Shen, Can Xu, Jia-Chen Gu, Yuxuan Lai, Chongyang Tao, Shuai Ma.  <a href="61925203/paper/2024/emnlp2024-leveraging.pdf">Leveraging Large Language Models for NLG Evaluation: Advances and Challenges</a>. In EMNLP, 2024.
+                                    </li>
+                                    <li>
+                                        Xuelian Lin, Shuai Ma, Jiahao Jiang, Yanchen Hou, Yihao Fu, Tianyu Wo.  <a href="61925203/paper/2021/tods2021.pdf">Error Bounded Line Simplification Algorithms for Trajectory Compression: An Experimental Evaluation</a>. TODS, 46(3): 11:1-11:44, 2021.
+                                    </li>
+                                    <li>
+                                        She Sun, Shuai Ma, and Jinhe Song, Wenhai Yue, Xuelian Lin, Tiejun Ma.  <a href="61925203/paper/2022/jcst2022.pdf">Experiments and analyses of anonymization mechanisms for trajectory data publishing</a>. JCST, 37(5):1026-1048, 2022.
+                                    </li>
+                                    <li>
+                                        Yifeng Jin, Zijing Tan, Weijun Zeng, Shuai Ma. <a
+                                            href="61925203/paper/2021/icde2021-approximate.pdf"> Approximate Order Dependency Discovery </a>. In ICDE, 2021.
+                                    </li>
+                                </ol>
+                                申请专利列表：
+                                <ol>
+                                    <li>
+                                        蒋金凯, 林学练, 宋景和, 马帅. 一种时态图数据库分布式事务解决系统, 授权日期2022-02-15, 授权号CN112214649B
+                                    </li>
+                                    <li>
+                                        马帅, 张钟熙, 李博. 一种面向控制过程的异常检测系统, 授权日期2023-08-22, 授权号CN112380274B
+                                    </li>
+                                    <li>
+                                        马帅, 周金雨. 一种面向化合物建模的集合表示学习方法, 授权日期2024-10-19, 授权号CN114171138B
+                                    </li>
+                                    <li>
+                                        林学练, 付逸豪, 马帅, 叶苏鹏. 一种基于时空约束的轨迹跟踪方法, 授权日期2024-06-18, 授权号CN114398590B
+                                    </li>
+                                    <li>
+                                        马帅, 华轶名, 王惠芬. 一种无监督粤语论坛抽取式摘要方法, 申请日期2021-11-25, 专利号202111410943.8
+                                    </li>
+                                    <li>
+                                        林学练, 叶苏鹏, 马帅. 一种基于压缩轨迹的地图匹配方法, 申请日期2024-05-16, 专利号202410607247.3
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">数据感知的近似计算理论和方法</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>数据感知的近似计算是通过在算法设计过程中充分结合数据特性，针对不同类型问题设计相应算法，以获得更优计算效果的一类大数据近似计算方法。针对时空关联复杂、规则发现困难和数据多模异构等特点，开展了基于数据感知的时空分析、规则发现和多模分析等研究。相关成果发表在SIGMOD、VLDB、ICDE、NeurIPS、ACL和IJCAI等国际顶级会议，以及TMC、VLDBJ和TKDE等国际顶级期刊，共发表论文17篇，其中包括CCF-A类13篇，CCF-B类4篇，并申请国家发明专利6项，其中已授权4项。</p>
+                                论文列表：
+                                <ol>
+                                    <li>
+                                        Yahui Sun, Shuai Ma, Bin Cui. <a
+                                            href="61925203/paper/2022/sigmod2022.pdf">Hunting Temporal Bumps in Graphs with Dynamic Vertex Properties</a>. In SIGMOD, 2022. 
+                                    </li>
+                                    <li>
+                                        Renjun Hu, Jingbo Zhou, Xinjiang Lu, Hengshu Zhu, Shuai Ma, Hui Xiong. <a
+                                            href="61925203/paper/2022/tmc2022.pdf">NCF: A Neural Context Fusion Approach to Raw Mobility Annotation</a>. TMC, 21(1):226-238, 2022. 
+                                    </li>
+                                    <li>
+                                        Renjun Hu, Xinjiang Lu, Chuanren Liu, Yanyan Li, Hao Liu, Jingjing Gu, Shuai Ma, Hui Xiong.  <a
+                                            href="61925203/paper/2020/ijcai2020.pdf">Why We Go Where We Go: Profiling User Decisions on Choosing POIs</a>. In IJCAI, 2020.
+                                    </li>
+                                    <li>
+                                        Renjun Hu, Chi Yan, Yanyan Li, Jingbo Zhou, Shuai Ma, Hui Xiong.  <a href="61925203/paper/2020/tkdd2020.pdf">Exploiting User Preference and Mobile Peer Influence for Human Mobility Annotation</a>. TKDD, 14(6):67:1-67:18, 2020. 
+                                    </li>
+                                    <li>
+                                        Dongsheng Luo, Shuai Ma, Yaowei Yan, Chunming Hu, Xiang Zhang, Jinpeng Huai. <a
+                                            href="61925203/paper/2021/icde2021-a-collective.pdf">A Collective Approach to Scholar Name Disambiguation</a>. In ICDE, 2021.
+                                    </li>
+                                    <li>
+                                        Dongsheng Luo, Shuai Ma, Yaowei Yan, Chunming Hu, Xiang Zhang, Jinpeng Huai. <a
+                                            href="61925203/paper/2022/tkde2022.pdf">A Collective Approach to Scholar Name Disambiguation</a>. TKDE, 34(5): 2020-2032, 2022.
+                                    </li>
+                                    <li>
+                                        Shuai Li, Yue Zhang, Zijing Tan, Shuai Ma. <a
+                                            href="61925203/paper/2022/information_systems2022.pdf">Diversifying repairs of Denial constraint violations</a>. Information Systems, 108: 102041, 2022. 
+                                    </li>
+                                    <li>
+                                        Jixuan Chen, Yifeng Jin, Yihan Li, Zijing Tan, Weidong Yang, Shuai Ma.  <a href="61925203/paper/2023/tkde2023-effective.pdf">Effective and Efficient Lexicographical Order Dependency Discovery</a>. TKDE, 35(9): 9700-9714, 2023.
+                                    </li>
+                                    <li>
+                                        Sijia Jiang, Zijing Tan, JiaweiWang, Zhikang Wang, Shuai Ma.  <a href="61925203/paper/2023/information-systems2023.pdf">Guided conditional functional dependency discovery</a>. Information Systems, 114: 102158, 2023.
+                                    </li>
+                                    <li>
+                                        Shulei Kuang, Honghui Yang, Zijing Tan, Shuai Ma.  <a
+                                            href="61925203/paper/2024/vldb2024.pdf">Efficient Differential Dependency Discovery</a>. In VLDB, 2024.
+                                    </li>
+                                    <li>
+                                        Yihan Li, Ruifeng Li, Zijing Tan, Weidong Yang, Shuai Ma.  <a href="61925203/paper/2024/icde2024.pdf">Efficient Set-Based Order Dependency Discovery with a Level-Wise Hybrid Strategy</a>. In ICDE, 2024.
+                                    </li>
+                                    <li>
+                                        Zijing Tan, Ai Ran, Shuai Ma, Sheng Qin.  <a
+                                            href="61925203/paper/2020/vldb2020.pdf">Fast Incremental Discovery of Pointwise Order Dependencies</a>. In VLDB, 2020. 
+                                    </li>
+                                    <li>
+                                        Renjie Xiao, Yongan Yuan, Zijing Tan, Shuai Ma.  <a
+                                            href="61925203/paper/2022/icde2022.pdf">Dynamic Functional Dependency Discovery with Dynamic Hitting Set Enumeration</a>. In ICDE, 2022.
+                                    </li>
+                                    <li>
+                                        Chaoqin Qian, Menglu Li, Zijing Tan, Ai Rang, Shuai Ma.  <a
+                                            href="61925203/paper/2023/vldbj2023.pdf">Incremental discovery of denial constraints</a>. VLDBJ, 32(6): 1289-1313, 2023.
+                                    </li>
+                                    <li>
+                                        Kun Yan, Lei Ji, Huaishao Luo, Ming Zhou, Nan Duan, Shuai Ma. <a href="61925203/paper/2021/acl2021-control.pdf">Control Image Captioning Spatially and Temporally</a>. In ACL/IJCNLP, 2021.  
+                                    </li>
+                                    <li>
+                                        Kun Yan, Lei Ji, Che Wu, Jianmin Bao, Ming Zhou, Nan Duan, Shuai Ma. <a href="61925203/paper/2022/eccv2022.pdf">Trace Controlled Text to Image Generation</a>. In ECCV, 2022. 
+                                    </li>
+                                    <li>
+                                        Kun Yan, Zeyu Wang, Lei Ji, Yuntao Wang, Nan Duan, Shuai Ma.  <a href="61925203/paper/2024/neurips2024.pdf">Voila-A: Aligning Vision-Language Models with User's Gaze Attention</a>. In NeurIPS, 2024.
+                                    </li>
+                                </ol>
+                                申请专利列表：
+                                <ol>
+                                    <li>
+                                        蒋金凯, 林学练, 宋景和, 马帅. 一种时态图数据库分布式事务解决系统, 授权日期2022-02-15, 授权号CN112214649B
+                                    </li>
+                                    <li>
+                                        马帅, 张钟熙, 李博. 一种面向控制过程的异常检测系统, 授权日期2023-08-22, 授权号CN112380274B
+                                    </li>
+                                    <li>
+                                        马帅, 周金雨. 一种面向化合物建模的集合表示学习方法, 授权日期2024-10-19, 授权号CN114171138B
+                                    </li>
+                                    <li>
+                                        林学练, 付逸豪, 马帅, 叶苏鹏. 一种基于时空约束的轨迹跟踪方法, 授权日期2024-06-18, 授权号CN114398590B
+                                    </li>
+                                    <li>
+                                        马帅, 华轶名, 王惠芬. 一种无监督粤语论坛抽取式摘要方法, 申请日期2021-11-25, 专利号202111410943.8
+                                    </li>
+                                    <li>
+                                        林学练, 叶苏鹏, 马帅. 一种基于压缩轨迹的地图匹配方法, 申请日期2024-05-16, 专利号202410607247.3
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">基于新型存储的计算理论和方法</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>基于新型存储的计算是从计算的角度研究新型非易失存储器件的表达能力，研究分析传统算法如何转换为在新型非易失存储器件计算的一类计算方法。针对存储芯片跨阶段设计结果质量低下和矩阵乘法加速器可扩展性差等特点，开展了芯片工艺映射方法和新型材料矩阵乘法计算的研究。相关成果发表在ICCD国际知名会议，以及TCAD国际顶级期刊，共发表论文2篇，其中包括CCF-A类1篇，CCF-B类1篇，并授权国家发明专利1项。</p>
+                                论文列表：
+                                <ol>
+                                    <li>
+                                        Junfeng Liu, Liwei Ni, Xingquan Li, Min Zhou, Lei Chen, Xing Li, Qinghua Zhao, Shuai Ma. <a
+                                            href="61925203/paper/2023/iccd2023.pdf">AiMap: Learning to Improve Technology Mapping for ASICs via Delay Prediction</a>. In ICCD, 2023.
+                                        
+                                    </li>
+                                    <li>
+                                        Junfeng Liu, Liwei Ni, Lei Chen, Xing Li, Qinghua Zhao, Xingquan Li, Shuai Ma. <a
+                                            href="61925203/paper/2024/tcad2024.pdf">A Delay-Driven Iterative Technology Mapping Framework</a>. TCAD, Early Access, 2024. 
+                                    </li>
+                                </ol>
+                                国家发明专利列表：
+                                <ol>
+                                    <li>
+                                        马帅, 刘新宇. 一种基于ReRAM Crossbar的矩阵乘法计算设备和匹配的方法, 授权日期2024-06-21, 授权号CN114168903B
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">深度学习与传统算法的融合方法</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>深度学习本质上也是一种近似计算方法，深度学习与传统算法融合是包括通过传统算法实现深度学习的优化，通过深度学习实现传统算法的优化和深度学习与传统算法深度融合的一类大数据近似计算方法。针对现有融合方法辅助效果欠佳、优化程度不足与深度融合困难等特点，开展了传统算法辅助深度学习、深度学习辅助传统算法和传统算法与深度学习深度融合等研究。相关成果发表在VLDB、ACL和WWW等国际顶级会议，以及TKDE等国际顶级期刊，共发表论文9篇，其中包括CCF-A类5篇，CCF-B类4篇，并申请国家发明专利3项。</p>
+
+                                论文列表：
+                                <ol>
+                                    <li>    
+                                        Shuo Ren, Shujie Liu, Ming Zhou, Shuai Ma. <a
+                                            href="61925203/paper/2020/acl2020-a-graph.pdf">A Graph-based Coarse-to-fine Method for Unsupervised Bilingual Lexicon Induction</a>. In ACL, 2020.
+                                    </li>
+                                    <li>    
+                                        Shuo Ren, Yu Wu, Shujie Liu, Ming Zhou, Shuai Ma. <a
+                                            href="61925203/paper/2020/acl2020-a-retrieve.pdf">A Retrieve-and-Rewrite Initialization Method for Unsupervised Machine Translation</a>. In ACL, 2020.
+                                    </li>
+                                    <li>    
+                                        Bo Zhang, Xiaoming Zhang, Feiran Huang, Ming Lu, Shuai Ma. <a
+                                            href="61925203/paper/2023/tkde2023-deep.pdf">Deep Kernel Network Embedding</a>. TKDE, 35(6):5710-5723, 2023. 
+                                    </li>
+                                    <li>    
+                                        Jianling Gao, Chongyang Tao, Zhenchao Sun, Xiya Jiang, Shuai Ma. <a
+                                            href="61925203/paper/2025/www2025.pdf">Semi-Supervised Anomaly Detection through Denoising-Aware Contrastive Distance Learning</a>. In WWW, 2025.
+                                    </li>
+                                    <li>    
+                                        Mingxuan Li, Yazhe Wang, Shuai Ma, Chao Liu, Dongdong Huo, Yu Wang, Zhen Xu. <a
+                                            href="61925203/paper/2023/vldb2023.pdf">Auto-Tuning with Reinforcement Learning for Permissioned Blockchain Systems</a>. In VLDB, 2023.
+                                    </li>
+                                    <li>    
+                                        Liang Duan, Shuai Ma, Charu Aggarwal, Saket Sathe. <a
+                                            href="61925203/paper/2021/kais2021.pdf">Improving spectral clustering with deep embedding, cluster estimation and metric learning</a>. KAIS, 63(3):675-694, 2021. 
+                                    </li>
+                                    <li>    
+                                        Junfeng Liu, Min Zhou, Shuai Ma, Lujia Pan. <a
+                                            href="61925203/paper/2023/cikm2023.pdf">MATA*: Combining Learnable Node Matching with A* Algorithm for Approximate Graph Edit Distance Computation</a>. In CIKM, 2023. 
+                                    </li>
+                                    <li>    
+                                        Gang Wang, Ziyi Guo, Xiang Li, Dawei Yin, Shuai Ma. <a
+                                            href="61925203/paper/2021/edbt2021.pdf">SceneRec: Scene-Based Graph Neural Networks for Recommender Systems</a>. In EDBT, 2021. 
+                                    </li>
+                                    <li>    
+                                        Shu-Zheng Liu, Shuai Ma, Han-Qing Chen, Li-Zhen Cui, Jie Ding. <a
+                                            href="61925203/paper/2024/jcst2024-combining.pdf">Combining KNN with AutoEncoder for Outlier Detection</a>. JCST, 39(5):1153-1166, 2024.
+                                    </li>
+                                </ol>
+                                国家发明专利列表：
+                                <ol>
+                                    <li>
+                                        马帅, 刘叔正. 一种基于近邻自编码器的近邻异常检测系统, 申请日期2020-11-10, 专利号202011243520.7
+                                    </li>
+                                    <li>
+                                        马帅, 王惠芬. 一种高效的实体分块与匹配方法, 申请日期2022-11-12,专利号202211415627.4
+                                    </li>
+                                    <li>
+                                        马帅, 刘名祖. 一种容量约束的车辆路径求解方法, 申请日期2024-05-27, 专利号202410660311.4
+                                    </li>
+                                </ol>
+
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">面向国家社会需求的系统和应用</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>将实现任务感知及数据感知的新型算法并推广到实际应用中。面向国家社会需求，推广到相关应用中，检验并改善所提出的理论与方法，并且结合控制系统的反馈理念，形成闭环，追踪用户对这些应用的反馈信息以不断改进和完善相关理论和方法。项目结合了任务感知和数据感知的计算理论和方法以及深度学习与传统算法的融合方法等研究成果，在国防安全、国民经济和智能制造等领域推广应用，并申请国家发明专利3项，其中已授权1项。</p>
+                                国家发明专利列表：
+                                <ol>
+                                    <li>
+                                        马帅, 华轶名, 王惠芬. 一种无监督中文多文档抽取式摘要方法, 授权日期2024-05-31, 授权号CN114064885B
+                                    </li>
+                                    <li>
+                                        马帅, 蒋浩谊, 华轶名. 一种基于辅助信息的中文抽取性集成无监督摘要的方法, 申请日期2020-3-24, 专利号202010211550.3
+                                    </li>
+                                    <li>
+                                        林学练, 谢旭晨, 马帅. 一种面向安全多方计算的类SQL查询处理器, 申请日期2024-05-21, 专利号202410631029.3
+                                    </li>
+                                </ol>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div role="tabpanel" class="tab-pane" id="communication">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">学术服务</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>负责人马帅教授担任国际期刊The VLDB Journal、Knowledge and Information Systems、IEEE Transactions on Big Data编委（Associate Editor）和Journal of Computer Science and Technology（JCST）的Editorial Board of Young Scientists；担任国际会议SIGMOD、VLDB、ICDE、WWW、ICDM、CIKM、DASFAA和SDM的Senior/PC Member，KDD'2024和ICDE'2025的领域主席（Area Chair），ICKG'2021的分会主席（Track Chair）和NDBC'2021的程序委员会联合主席（PC Co-Chair）；担任深圳市智慧城市和数字政府建设战略咨询委员会委员。
+                                </p>
+                                <p>其中，作为论坛主席负责组织了主题为“大数据治理—数据管理与人工智能的结合”的论坛（CNCC'2020），作为PC Co-Chair组织了第38届CCF中国数据库学术会议（NDBC'2021），作为Track Chair组织了The 12th IEEE International Conference on Knowledge Graph（ICKG'2021）；作为大数据科学与工程国际研究中心主任组织了各类学术活动。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">学术报告</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>
+                                    <strong>2020年</strong> <br/>
+                                    <ol>
+                                        <li>
+                                            受邀参加由国家自然科学基金委员会工程与材料科学部、信息科学部和政策局共同在北京举办的主题为“全景信息感知及智慧电网”的双清论坛，并做了题为“电网大数据智能分析的若干问题”的报告。
+                                        </li>
+                                        <li>
+                                            受邀参加由中国知网发起，农业大数据学报、中国农业大学共同举办的“大数据融合应用”系列公益讲座，并做了题为“大数据近似计算”的报告。
+                                        </li>
+                                        <li>
+                                            受邀参加中国计算机大会（CNCC'2020），并做了题为“Easy First Relation Extration with Information Redundancy”的报告。
+                                        </li>
+                                        <li>
+                                            受邀参加CCF人工智能与模式识别专委会走进高校活动之山东师范大学站，并做了题为“大数据近似计算”的报告。
+                                        </li>
+                                        <li>
+                                            受邀参加由中国计算机学会（CCF）数据库专委会和广东省计算机学会数据库分会联合主办的“CCF数据库专委会走进高校系列活动（第五期）”（数据库前沿技术研讨会暨广东省计算机学会数据库分会），并做了题为“大数据近似计算”的报告。
+                                        </li>
+                                        <li>
+                                            博士生任烁参加线上举办的ACL'2020会议，并做了题为“A Retrieve-and-Rewrite Initialization Method for Unsupervised Machine Translation” 和“A Graph-based Coarse-to-fine Method for Unsupervised Bilingual Lexicon Induction”的报告。
+                                        </li>
+                                    </ol>
+                                </p>
+                                <p>
+                                    <strong>2021年</strong> <br/>
+                                    <ol>
+                                        <li>
+                                            受邀在“21st International Conference on Algorithms and Architectures for Parallel Processing”（ICA3PP'2021）会议，做了题为“Approximate Computation for Big Data Analytics”的特邀报告，并获ICA3PP'2021杰出讲者。
+                                        </li>
+                                        <li>
+                                            受邀参加在沈阳市举办的2021年CCF青年精英大会（YEF'2021），并做了题为“Easy First Relation Extraction with Information Redundancy”的报告。
+                                        </li>
+                                        <li>
+                                            受邀参加由CCF南京会员活动中心举办的“钟山论坛——数据科学与软件工程前沿技术研讨会”，并做了题为“图数据高效计算方法和系统”的报告。
+                                        </li>
+                                        <li>
+                                            受邀参加在深圳市举办的“工业互联网赋能数字化转型：前沿技术与未来方向”技术论坛（CNCC'2021），并做了题为“Easy First Relation Extraction with Information Redundancy”的报告。
+                                        </li>
+                                        <li>
+                                            邀请了北京邮电大学王啸助理教授、新加坡国立大学孙亚辉研究员开展了学术交流并作专题报告。
+                                        </li>
+                                        <li>
+                                            博士生王罡参加线上举办的EDBT'2021会议，并做了题为“SceneRec: Scene-Based Graph Neural Networks for Recommender Systems”的报告。
+                                        </li>
+                                        <li>
+                                            博士生闫坤参加线上举办的ACL'2021会议，并做了题为“Control Image Captioning Spatially and Temporally”的报告。
+                                        </li>
+                                        <li>
+                                            博士生任烁参加线上举办的ACL'2021会议，并做了题为“SemFace: Pre-training Encoder and Decoder with a Semantic Interface for Neural Machine Translation”的报告。
+                                        </li>
+                                    </ol>
+                                </p>
+                                
+                                <p>
+                                    <strong>2022年</strong> <br/>
+                                    <ol>
+                                        <li>
+                                            受邀参加在贵阳市举办的“工业互联网技术前沿：挑战与机遇”技术论坛（CNCC'2022），并做了题为“大数据面临的机遇与挑战”的报告。
+                                        </li>
+                                        <li>
+                                            受邀参加在贵阳市举办的“图查询算法：发展、前沿与应用”技术论坛（CNCC'2022），并做了题为“高效大图数据近似计算”的报告。
+                                        </li>
+                                        <li>
+                                            受邀参加在成都市举办的 “机器视觉与学习”学术论坛（中国图象图形大会，CCIG'2022），并做了题为“图数据高效计算方法和系统”的报告。
+                                        </li>
+                                        <li>
+                                            博士生闫坤参加在以色列特拉维夫举办的ECCV'2022会议，并做了题为“Trace Controlled Text to Image Generation”的Poster展示。
+                                        </li>
+                                        <li>
+                                            博士生赵清华参加线上举办的AACL-IJCNLP'2022会议，并做了题为“KESA: A Knowledge Enhanced Approach To Sentiment Analysis”的报告。
+                                        </li>
+                                    </ol>
+                                </p>
+                                
+                                <p>
+                                    <strong>2023年</strong> <br/>
+                                    <ol>
+                                        <li>
+                                            受邀在“The 28th International Conference on Database Systems for Advanced Applications”（DASFAA'2023）会议，做了题为“Approximate Computation for Big Data Analytics”的Tutorial。
+                                        </li>
+                                        <li>
+                                            受邀参加在西安市举办的“2023 CCF黄河论坛”（CHHC'2023），并做了题为“高效大图数据近似计算”的报告。
+                                        </li>
+                                        <li>
+                                            受邀参加在盐城市举办的“第五届江苏省计算机网络与云计算新技术研讨会”，并做了题为“高效大图数据近似计算”的报告。
+                                        </li>
+                                        <li>
+                                            博士生刘俊锋参加在英国伯明翰举办的CIKM'2023会议，并做了题为“MATA*: Combining Learnable Node Matching with A* Algorithm for Approximate Graph Edit Distance Computation”的报告，参加在美国华盛顿举办的ICCD'2023会议，并做了题为“AiMap: Learning to Improve Technology Mapping for ASICs via Delay Prediction”的报告。
+                                        </li>
+                                        <li>
+                                            邀请了爱丁堡大学樊文飞院士、约克大学禹晓辉副教授开展了学术交流并作专题报告。
+                                        </li>
+                                    </ol>
+                                </p>        
+                                
+                                <p>
+                                    <strong>2024年</strong> <br/>
+                                    <ol>
+                                        <li>
+                                            受邀参加“第十二届CCF大数据学术会议”，并做了题为“高效大图数据近似计算”的报告。
+                                        </li>
+                                        <li>
+                                            受邀参加 “2024 IEEE AI for Science Congress”会议，并做了题为“Approximate Computation for Big Data Analytics”的报告。
+                                        </li>
+                                        <li>
+                                            受邀参加 “2024年CCF中国软件大会”，并做了题为“高效大图数据近似计算”的报告。
+                                        </li>
+                                        <li>
+                                            受邀参加“2024年CCF数字交通大会”，并做了题为“高效大图数据近似计算”的报告。 
+                                        </li>
+                                        <li>
+                                            博士生闫坤参加在加拿大温哥华举办的NeurIPS'2024会议，并做了题为“Voila-A: Aligning Vision-Language Models with User's Gaze Attention”的Poster展示。
+                                        </li>
+                                        <li>
+                                            邀请了南洋理工大学丛高教授开展了学术交流并作专题报告。
+                                        </li>
+                                    </ol>
+                                </p>  
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div role="tabpanel" class="tab-pane" id="application">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">国防安全</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul>
+                                    <li>系统技术与应用相关成果应用于重点区域XXX和XXX的治理，发挥了显著作用，支撑了2022年军事科学技术进步奖一等奖。</li>
+                                    <li>针对多语种自然语言的自动化情报因子关键性提炼能力不足问题，与优势军事情报用户深度捆绑，提出了基于图结构特征与预训练模型的端到端的关系抽取方法，获2020年由总装发起的“智算杯”挑战赛三等奖，并且协助XXX战区XXX队情报分析人员深入挖掘和利用军事开源情报数据，发现管理和利用军事知识，支撑军事辅助决策，提升态势情报、动向情报的分析处理能力。</li>
+                                    <li>基于大数据近似计算与多模态关联的政情分析关键技术相关成果应用于深圳嘉言信息科技有限公司的数据分析平台“重点国家国会分析预测系统”的跨模态数据融合、人物画像、近似搜索和智能预测等功能模块。该平台于2022年在广州暨南大学等单位得到了推广应用，对世界主要国家政情数据进行了挖掘分析，并形成了一系列政情大数据分析报告，对国际重大事件的发展趋势给出了智能预测，得到统战部、广东省公安厅信息中心等有关部门的肯定。相关成果显著提高了该公司在大数据分析、研发和市场响应方面的能力，产生了良好的经济和社会效益，助力公司在激烈的市场竞争中保持领先地位。</li>
+                                    <li>基于知识图谱的大数据分析关键技术相关成果还应用于北京悦点科技有限公司业界性能领先的知识图谱构建平台，提高了该平台的竞争力，助力该平台在实际产业中落地。该平台为公安安全机构提供全面情报分析，为线索搜集、情报研判、高危管控等业务提供强大的数据智能辅助。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">国民经济</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul>
+                                    <li>开发了业界性能领先的面向多方安全计算（MPC）的SQL查询优化器，应用于北京微芯区块链与边缘计算研究院，实现了面向MPC平台的SQL解析器、SQL查询任务优化和SQL查询原语优化等功能。该优化器是长安链区块数据管理和服务的重要组成部分，提升了长安链产品的竞争力，助力长安链在实际产业中落地。该优化器通过了金融科技产品认证，并且在上海市大数据中心等单位进行示范性应用，为太平洋保险“沪惠保”主动理赔、工商银行“i惠普”个人测额、交通银行科创企业服务、建设银行“惠懂你”科创人才服务等具体业务提供隐私保护的数据计算和分析支持。</li>
+                                    <li>基于知识图谱的大数据分析关键技术相关成果应用于北京悦点科技有限公司的知识图谱构建平台，该平台在金融风控领域，为风险探查、风险传导、风险计算和风险管控等多个业务阶段提供一体化智能决策方案。</li>
+                                    <li>自动并行图计算技术相关成果应用于阿里巴巴集团内外覆盖搜索、安全、推荐和风控等各个领域的60多个业务，包括阿里云MaxCompute计算平台和淘宝推荐搜索等，在近年双十一购物节等多项活动中，技术先进性与系统鲁棒性经受住海量数据和瞬时峰值的考验，带来约2.5亿的经济价值。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">智能制造</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul>
+                                    <li>制造企业数据空间构建方法与技术相关成果应用于联想（北京）有限公司的联想统一数据平台LUDP以及智能应用的搭建，帮助联想实现了全流程的产品优化和供应链再造，显著提升了公司运作效率。同时，通过自主研发的大数据构件替换国外软件产品，为公司节省数千万美元的软件授权费用。相关成果支撑了联想在研发、生产、销售服务、供应链管理、上下游协同等各个环节的能力提升，实现了对印度地区的生产、物流和销售渠道的调整，促进设备销量提升18%，节省生产物流费用近千万美元。</li>
+                                    <li>基于知识图谱的大数据分析关键技术相关成果还应用于北京悦点科技有限公司的知识图谱构建平台，该平台在工业轨道交通设备管理领域，为工业故障维修、应急管理、智能排产、智能巡检等业务项提供智能解决方案。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="modal-footer" style="width: 100%; overflow: hidden;">
+                    <div class="container">
+                        <div class="row" style="text-align: center;">
+                            <small>《大数据近似计算》 青年科学基金项目（A类）[原国家杰出青年科学基金项目]（项目批准号61925203，执行期限：2020.01 ~ 2024.12）
+                                Copyright © All Rights Reserved.</small>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
